@@ -4,7 +4,8 @@ class Game {
     this.closeProfessionListButton = document.querySelector(
       ".close-profession-list_button"
     );
-    this.profession = new Profession();
+    this.salary = new Salary();
+    this.profession = new Profession(this.salary);
 
     this.initEvents();
   }

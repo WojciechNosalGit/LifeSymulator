@@ -1,42 +1,36 @@
 class Profession {
-  constructor() {
+  constructor(salary) {
     this.profesionListContainer = document.querySelector(
       ".profession-list_container"
     );
     this.professionList = document.getElementById("profession-list");
     this.jobPopupWindow = document.querySelector(".job-popup");
 
-    this.currentJob = {};
+    this.salary = salary;
 
     this.addJobElementsToList();
   }
 
-  createJobElement(title, minSalary, maxSalary, imageName) {
-    //tu mógłbym użyć destrukturyzacji, tak żeby jako argument przekazać po prostu obiekt, ale nie pamiętam jak
+  createJobElement({ name, salaryRange, image }) {
     const li = document.createElement("li");
     li.classList.add("profession");
 
     const img = document.createElement("img");
-    img.src = `assets/images/${imageName}`;
-    img.alt = imageName;
+    img.src = `assets/images/${image}`;
+    img.alt = image;
 
     const div = document.createElement("div");
     div.classList.add("text-content");
 
     const h2 = document.createElement("h2");
-    h2.textContent = title;
+    h2.textContent = name;
 
     const paragraphSalary = document.createElement("p");
     paragraphSalary.classList.add("salary");
-    paragraphSalary.textContent = `Pensja: ${minSalary} - ${maxSalary} PLN`;
-
-    // const paragraphDescription = document.createElement("p");
-    // paragraphDescription.classList.add("description");
-    // paragraphDescription.textContent = description;
+    paragraphSalary.textContent = `Pensja: ${salaryRange[0]} - ${salaryRange[1]} PLN`;
 
     div.appendChild(h2);
     div.appendChild(paragraphSalary);
-    // div.appendChild(paragraphDescription);
 
     li.appendChild(img);
     li.appendChild(div);
@@ -45,13 +39,8 @@ class Profession {
   }
 
   addJobElementsToList() {
-    professions.forEach((item) => {
-      this.createJobElement(
-        item.name,
-        item.salaryRange[0],
-        item.salaryRange[1],
-        item.image
-      );
+    professions.forEach((job) => {
+      this.createJobElement(job);
     });
   }
 
@@ -133,7 +122,7 @@ class Profession {
   }
 
   selectJob(job) {
-    this.currentJob = job;
+    this.salary.setJob(job);
     this.closeBigPictureJob();
     this.closeJobsWindow();
   }
