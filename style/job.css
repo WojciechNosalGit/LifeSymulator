@@ -17,7 +17,8 @@
 .header img {
   width: 200px;
   height: 200px;
-  border-radius: 4px;
+  border: 4px solid var(--main-color);
+  border-radius: 8px;
   object-fit: cover;
   margin-right: 28px;
 }
@@ -57,7 +58,7 @@
 .skills p span.bonus {
   color: var(--orange);
 }
-.close-job-popup_btn {
+/* .close-job-popup_btn {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -72,7 +73,7 @@
 
 .close-job-popup_btn:hover {
   transform: rotate(90deg);
-}
+} */
 
 .button_container {
   display: flex;
@@ -86,12 +87,19 @@
 
 .job-popup_back {
   background-color: white;
+  border: 4px solid var(--main-color);
 
   &:hover {
     background-color: #f0003c;
+    border: none;
   }
 }
 
 .job-popup_select {
   background-color: var(--secound-color);
+
+  &:hover {
+    background-color: white;
+    border: 4px solid var(--main-color);
+  }
 }

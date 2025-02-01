@@ -1,0 +1,81 @@
+#app {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(190, 238, 238);
+  padding: 16px;
+  color: var(--black);
+}
+
+h1.main-title {
+  text-align: center;
+  font-family: "very-punk", sans-serif;
+  font-size: 12rem;
+  font-weight: 200;
+  color: var(--main-color);
+  text-shadow: -1px 1px 0px black;
+}
+
+.pick-job_button {
+  display: block;
+  margin: 48px auto;
+}
+
+/* --------------------------------- */
+
+.character {
+  max-width: 600px;
+  background-color: white;
+  margin: 0 auto;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* background: linear-gradient(to right, var(--main-color) 28%, white 8%); */
+}
+
+.character-stats {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.character-stats p {
+  font-size: 2.2rem;
+}
+
+.account {
+  flex-grow: 1;
+  color: var(--orange);
+
+  span {
+    text-shadow: -1px 1px 0px black;
+  }
+}
+
+.food-level {
+  margin-left: 8px;
+}
+/* character-info */
+
+.character-info h1 {
+  text-align: center;
+  font-weight: 200;
+  margin-bottom: 16px;
+}
+
+.current-salary {
+  font-size: 2.4rem;
+  color: var(--secound-color);
+  margin-bottom: 4px;
+}
+
+.bonus {
+  font-size: 2.4rem;
+
+  span {
+    color: var(--orange);
+    text-shadow: -1px 1px 0px black;
+  }
+}

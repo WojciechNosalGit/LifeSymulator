@@ -6,6 +6,8 @@ class Profession {
     this.professionList = document.getElementById("profession-list");
     this.jobPopupWindow = document.querySelector(".job-popup");
 
+    this.currentJob = {};
+
     this.addJobElementsToList();
   }
 
@@ -55,14 +57,14 @@ class Profession {
 
   showJobsWindow() {
     this.profesionListContainer.classList.remove("display-none");
-    this.pickCurrentJob();
+    this.pickCurrentJobFromList();
   }
 
   closeJobsWindow() {
     this.profesionListContainer.classList.add("display-none");
   }
 
-  pickCurrentJob() {
+  pickCurrentJobFromList() {
     const professions = [...document.querySelectorAll("li")];
 
     professions.forEach((item, index) => {
@@ -115,14 +117,24 @@ class Profession {
             </div>
       `;
 
-    this.closeBigPictureJob();
+    document.querySelector(".job-popup_back").addEventListener("click", (e) => {
+      this.closeBigPictureJob();
+    });
+
+    document
+      .querySelector(".job-popup_select")
+      .addEventListener("click", () => {
+        this.selectJob(job);
+      });
   }
 
   closeBigPictureJob() {
-    document
-      .querySelector(".close-job-popup_btn")
-      .addEventListener("click", (e) => {
-        this.jobPopupWindow.classList.add("display-none");
-      });
+    this.jobPopupWindow.classList.add("display-none");
+  }
+
+  selectJob(job) {
+    this.currentJob = job;
+    this.closeBigPictureJob();
+    this.closeJobsWindow();
   }
 }

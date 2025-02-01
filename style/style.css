@@ -29,7 +29,6 @@ html {
 body {
   background-color: #f4f4f4;
   height: 100vh;
-  padding: 16px;
 }
 
 .display-none {
@@ -56,13 +55,4 @@ body {
   &:hover {
     background-color: var(--main-color);
   }
-}
-
-h1.main-title {
-  text-align: center;
-  font-family: "very-punk", sans-serif;
-  font-size: 10rem;
-  font-weight: 200;
-  color: var(--main-color);
-  text-shadow: -1px 1px 4px black;
 }
