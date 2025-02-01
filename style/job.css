@@ -1,0 +1,97 @@
+.job-popup {
+  width: 500px;
+  height: 80vh;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, var(--main-color) 28%, white 8%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.header {
+  display: flex;
+  align-items: center;
+}
+.header img {
+  width: 200px;
+  height: 200px;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-right: 28px;
+}
+.header .title {
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+}
+.salary {
+  font-size: 1.8rem;
+  color: var(--secound-color);
+}
+.job-popup .description {
+  margin-top: 16px;
+  padding: 8px;
+  background: white;
+  border-radius: 4px;
+  font-size: 2rem;
+}
+.resources,
+.skills {
+  margin-top: 16px;
+  padding: 8px;
+  background: white;
+  border-radius: 4px;
+}
+.resources p,
+.skills p {
+  margin: 4px 0;
+  font-size: 2.4rem;
+}
+.resources p span,
+.skills p span {
+  display: inline-block;
+  width: 32px;
+}
+
+.skills p span.bonus {
+  color: var(--orange);
+}
+.close-job-popup_btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  font-size: 3.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 10;
+}
+
+.close-job-popup_btn:hover {
+  transform: rotate(90deg);
+}
+
+.button_container {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 16px;
+  right: 0;
+  padding: 16px;
+  width: 100%;
+}
+
+.job-popup_back {
+  background-color: white;
+
+  &:hover {
+    background-color: #f0003c;
+  }
+}
+
+.job-popup_select {
+  background-color: var(--secound-color);
+}

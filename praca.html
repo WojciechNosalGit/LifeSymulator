@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/professions.css" />
+    <link rel="stylesheet" href="style/job.css" />
+    <title>Life symulator</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="main-title">life symulator</h1>
+
+      <button id="pick-job" class="button">Wybierz zawód</button>
+
+      <div class="profession-list_container display-none">
+        <div class="button-wrap">
+          <button class="close-profession-list_button">&times;</button>
+        </div>
+        <h1>Lista Zawodów</h1>
+        <ul id="profession-list" class="profession-list">
+          <!-- <li class="profession">
+            <img src="assets/images/programmer.jpg" alt="Programista" />
+            <div class="text-content">
+              <h2>Programista</h2>
+              <p class="salary">Pensja: 10 000 - 20 000 PLN</p>
+              <p class="description">Tworzy aplikacje i strony internetowe.</p>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+
+      <div class="job-popup display-none">
+        <!-- <button class="close-job-popup_btn">&times;</button>
+        <div class="header">
+          <img src="assets/images/programmer-big.jpg" alt="Zawód" />
+          <div>
+            <div class="title">Programista</div>
+            <div class="salary">Pensja: 5000 - 15000 PLN</div>
+          </div>
+        </div>
+        <div class="description">
+          Programista zajmuje się tworzeniem oprogramowania, analizą kodu i
+          rozwijaniem aplikacji.
+        </div>
+        <div class="resources">
+          <p>💧 2L dziennie</p>
+          <p>🍖 2500 :smile: kcal dziennie</p>
+        </div>
+        <div class="skills">
+          <p>⭐ Szansa na bonus: +10%</p>
+          <p>💰 -5% do cen zakupów</p>
+          <p>📈 Szansa na większy zarobek</p>
+                  <div class="button_container">
+          <button class="job-popup_back">Cofnij</button>
+          <button class="job-popup_select">Wybierz</button>
+        </div>
+        </div> -->
+      </div>
+      <!-- end popup -->
+    </div>
+    <script src="jobsList.js"></script>
+    <script src="Profession.js"></script>
+    <script src="Game.js"></script>
+  </body>
+</html>
