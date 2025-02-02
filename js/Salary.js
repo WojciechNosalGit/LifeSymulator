@@ -4,6 +4,8 @@ class Salary {
 
     this.currentJob = null;
     this.bonus = 0;
+
+    this.currentSalary = 0;
   }
 
   setJob(job) {
@@ -27,10 +29,16 @@ class Salary {
 
     let result = Math.floor(weightedRandom * (max - min + 1)) + min;
 
-    this.displaySalary(result);
+    this.currentSalary = result;
+
+    this.displaySalary();
   }
 
-  displaySalary(salary) {
-    this.curentSalaryElement.textContent = `Zarobisz ${salary} zł`;
+  displaySalary() {
+    this.curentSalaryElement.textContent = `Zarobisz ${this.currentSalary} zł`;
+  }
+
+  getSalary() {
+    return this.currentSalary;
   }
 }

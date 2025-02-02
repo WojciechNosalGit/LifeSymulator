@@ -15,9 +15,15 @@ h1.main-title {
   text-shadow: -1px 1px 0px black;
 }
 
+.buttons_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+}
+
 .pick-job_button {
   display: block;
-  margin: 48px auto;
 }
 
 /* --------------------------------- */

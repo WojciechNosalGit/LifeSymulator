@@ -75,6 +75,7 @@ class Profession {
       this.closeBigPictureJob();
     });
   }
+
   createJobPopupHTML(job) {
     return `
         <div class="header">

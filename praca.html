@@ -12,10 +12,14 @@
   <body>
     <div id="app">
       <h1 class="main-title">life symulator</h1>
-
-      <button id="pick-job" class="pick-job_button button">
-        Wybierz zawód
-      </button>
+      <div class="buttons_container">
+        <button id="pick-job" class="pick-job_button button">
+          Wybierz zawód
+        </button>
+        <button id="quit-job" class="quit-job_button button display-none">
+          Zrezygnuj
+        </button>
+      </div>
 
       <div class="profession-list_container display-none">
         <div class="button-wrap">
@@ -29,20 +33,22 @@
 
       <div class="character">
         <div class="character-stats">
-          <p class="account">💰 <span>10 zł</span></p>
-          <p class="wather-level">💧 <span>100%</span></p>
-          <p class="food-level">🍖 <span>100%</span></p>
+          <p class="account">💰 <span>awaria</span></p>
+          <p class="waher-level">💧 <span>50%</span></p>
+          <p class="food-level">🍖 <span>50%</span></p>
         </div>
         <div class="character-info">
-          <h1>Pracujesz jako strażak</h1>
-          <p class="current-salary">Zarobisz 8500 zł</p>
-          <p class="bonus">Bonus: <span>300 zł</span></p>
+          <h1>Bezrobotny</h1>
+          <p class="current-salary">Może zarobisz</p>
+          <!-- <p class="bonus">Bonus: <span>300 zł</span></p> -->
         </div>
       </div>
     </div>
     <script src="js/jobsList.js"></script>
     <script src="js/Profession.js"></script>
     <script src="js/Salary.js"></script>
+    <script src="js/Wallet.js"></script>
+    <script src="js/Resources.js"></script>
     <script src="js/Game.js"></script>
     <script src="main.js"></script>
   </body>
