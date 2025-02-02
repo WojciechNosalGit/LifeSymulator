@@ -1,15 +1,21 @@
 class Salary {
   constructor() {
+    this.curentSalaryElement = document.querySelector(".current-salary");
+
     this.currentJob = null;
+    this.bonus = 0;
   }
 
   setJob(job) {
-    console.log(job);
     this.currentJob = job;
     this.calcSalary();
   }
 
   calcSalary() {
+    if (!this.currentJob) {
+      throw new Error("No job selected");
+    }
+
     const salary = this.currentJob.salaryRange;
     const max = salary[1];
     const min = salary[0];
@@ -21,6 +27,10 @@ class Salary {
 
     let result = Math.floor(weightedRandom * (max - min + 1)) + min;
 
-    console.log(result);
+    this.displaySalary(result);
+  }
+
+  displaySalary(salary) {
+    this.curentSalaryElement.textContent = `Zarobisz ${salary} zł`;
   }
 }

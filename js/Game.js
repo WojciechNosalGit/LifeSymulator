@@ -7,6 +7,8 @@ class Game {
     this.salary = new Salary();
     this.profession = new Profession(this.salary);
 
+    this.currentJob = null;
+
     this.initEvents();
   }
 
@@ -18,5 +20,20 @@ class Game {
     this.closeProfessionListButton.addEventListener("click", () =>
       this.profession.closeJobsWindow()
     );
+
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("job-popup_select")) {
+        this.currentJob = this.profession.getSelectedJob();
+        this.startJob(this.currentJob);
+      }
+    });
   }
+
+  startJob(job) {
+    this.salary.setJob(job);
+    this.profession.closeBigPictureJob();
+    this.profession.closeJobsWindow();
+  }
+
+  render() {}
 }

@@ -1,12 +1,12 @@
 class Profession {
-  constructor(salary) {
-    this.profesionListContainer = document.querySelector(
+  constructor() {
+    this.professionListContainer = document.querySelector(
       ".profession-list_container"
     );
     this.professionList = document.getElementById("profession-list");
     this.jobPopupWindow = document.querySelector(".job-popup");
 
-    this.salary = salary;
+    this.selectedJob = null;
 
     this.addJobElementsToList();
   }
@@ -45,15 +45,15 @@ class Profession {
   }
 
   showJobsWindow() {
-    this.profesionListContainer.classList.remove("display-none");
-    this.pickCurrentJobFromList();
+    this.professionListContainer.classList.remove("display-none");
+    this.setupJobSelectionHandlers();
   }
 
   closeJobsWindow() {
-    this.profesionListContainer.classList.add("display-none");
+    this.professionListContainer.classList.add("display-none");
   }
 
-  pickCurrentJobFromList() {
+  setupJobSelectionHandlers() {
     const professions = [...document.querySelectorAll("li")];
 
     professions.forEach((item, index) => {
@@ -64,19 +64,19 @@ class Profession {
   }
 
   showBigPictureJob(index) {
-    const job = professions[index];
+    const job = professions[index]; //jobList.js
+    this.selectedJob = job;
 
     this.jobPopupWindow.classList.remove("display-none");
 
-    const showSkils = () => {
-      let text = ``;
-      job.otherSkills.forEach((skill) => {
-        text += `<p>${skill}</p>`;
-      });
-      return text;
-    };
+    this.jobPopupWindow.innerHTML = this.createJobPopupHTML(job);
 
-    this.jobPopupWindow.innerHTML = `
+    document.querySelector(".job-popup_back").addEventListener("click", (e) => {
+      this.closeBigPictureJob();
+    });
+  }
+  createJobPopupHTML(job) {
+    return `
         <div class="header">
           <img src="assets/images/${job.image}" alt="${job.name}" />
           <div>
@@ -97,7 +97,7 @@ class Profession {
           <p><span>🍀</span> Szansa na bonus: <span class="bonus">${
             job.bonusChance
           }%</span></p>
-          ${showSkils()}
+           ${job.otherSkills.map((skill) => `<p>${skill}</p>`).join("")}
         
       </div>
           <div class="button_container">
@@ -105,25 +105,14 @@ class Profession {
               <button class="job-popup_select button">Wybierz</button>
             </div>
       `;
-
-    document.querySelector(".job-popup_back").addEventListener("click", (e) => {
-      this.closeBigPictureJob();
-    });
-
-    document
-      .querySelector(".job-popup_select")
-      .addEventListener("click", () => {
-        this.selectJob(job);
-      });
   }
 
   closeBigPictureJob() {
     this.jobPopupWindow.classList.add("display-none");
   }
 
-  selectJob(job) {
-    this.salary.setJob(job);
-    this.closeBigPictureJob();
-    this.closeJobsWindow();
+  getSelectedJob() {
+    console.log(this.selectedJob);
+    return this.selectedJob;
   }
 }
