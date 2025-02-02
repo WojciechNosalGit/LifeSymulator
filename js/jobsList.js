@@ -26,7 +26,7 @@ const professions = [
     image: "fireman.jpg",
     description: "Ratownik gaszący pożary i ratujący ludzi.",
     water: 4,
-    food: 3500,
+    food: 4500,
     bonusChance: 10,
     otherSkills: ["<span>🔥</span> większa odporność na ogień"],
   },

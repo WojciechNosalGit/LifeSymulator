@@ -24,13 +24,12 @@ class Game {
 
     this.waterLevel = 80;
     this.foodLevel = 80;
-    this.startWaterRequirement = 2000; //ml
-    this.startFoodRequirement = 2000; //kcal
+    this.basicWaterRequirement = 2; //l
+    this.basicFoodRequirement = 2000; //kcal
     this.resourcesIntervalIndex = null;
-    this.reduceResourcesTime = 1000;
+    this.reduceResourcesTime = 3000;
 
     this.initEvents();
-    this.updateResurces();
 
     this.render();
   }
@@ -61,7 +60,12 @@ class Game {
   startJob(job) {
     this.isAtWork = true;
     clearInterval(this.resourcesIntervalIndex);
-    this.updateResurces();
+    this.updateResurces(
+      this.waterLevel,
+      this.foodLevel,
+      this.currentJob.water,
+      this.currentJob.food
+    );
 
     this.profession.closeBigPictureJob();
     this.profession.closeJobsWindow();
@@ -94,12 +98,12 @@ class Game {
     }
   }
 
-  updateResurces() {
+  updateResurces(waterLevel, foodLevel, waterRequirement, foodRequirement) {
     this.resources = new Resources(
-      this.waterLevel,
-      this.foodLevel,
-      this.startWaterRequirement,
-      this.startFoodRequirement
+      waterLevel,
+      foodLevel,
+      waterRequirement,
+      foodRequirement
     );
 
     this.setResources();
@@ -121,6 +125,14 @@ class Game {
   render() {
     this.isAtWork = false;
     this.jobButtonsHandler();
+
+    clearInterval(this.resourcesIntervalIndex);
+    this.updateResurces(
+      this.waterLevel,
+      this.foodLevel,
+      this.basicWaterRequirement,
+      this.basicFoodRequirement
+    );
 
     this.accountElement.textContent = this.wallet.getAccountValue();
     this.currentSalaryElement.textContent = !this.isAtWork
