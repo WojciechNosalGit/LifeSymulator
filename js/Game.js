@@ -12,9 +12,17 @@ class Game {
 
     this.currentSalaryElement = document.querySelector(".current-salary");
 
+    this.groceryItems = [
+      new Grocery("Woda", 0, 5, 1000), // Woda: 0 kcal, 5 zł, 1000 ml
+      new Grocery("Mięso", 500, 20), // Mięso: 500 kcal, 20 zł
+      new Grocery("Bułki", 200, 3), // Bułki: 200 kcal, 3 zł
+    ];
+
     this.salary = new Salary();
     this.profession = new Profession();
     this.wallet = new Wallet();
+    this.gracery = new Grocery();
+    this.equipment = new Equipment();
 
     this.currentJob = null;
     this.currentSalary = 0;
@@ -29,6 +37,7 @@ class Game {
     this.resourcesIntervalIndex = null;
     this.reduceResourcesTime = 3000;
 
+    this.renderGrocery();
     this.initEvents();
 
     this.render();
@@ -54,6 +63,13 @@ class Game {
       console.log("działa");
       clearInterval(this.jobTimerIndex);
       this.render();
+    });
+    //grocery
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("grocery-item")) {
+        const itemIndex = event.target.dataset.index;
+        this.buyItem(itemIndex);
+      }
     });
   }
 
@@ -120,6 +136,28 @@ class Game {
   setResources() {
     this.waterLevelElement.textContent = `${Math.floor(this.waterLevel)}%`;
     this.foodLevelElement.textContent = `${Math.floor(this.foodLevel)}%`;
+  }
+
+  //grocery
+  renderGrocery() {
+    const groceryElement = document.getElementById("grocery-list");
+    if (groceryElement) {
+      groceryElement.innerHTML = this.groceryItems
+        .map(
+          (item, index) =>
+            `<li class="grocery-item" data-index="${index}">${item.getInfo()}</li>`
+        )
+        .join("");
+    }
+  }
+
+  // Kup przedmiot i dodaj go do ekwipunku
+  buyItem(index) {
+    const item = this.groceryItems[index];
+    if (item) {
+      this.equipment.addItem(item);
+      this.equipment.displayEquipment();
+    }
   }
 
   render() {

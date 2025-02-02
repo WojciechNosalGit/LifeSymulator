@@ -1,8 +1,6 @@
 class Wallet {
   constructor(value = 0) {
     this.account = value;
-
-    console.log(`na koncie jest ${this.account}`);
   }
 
   getAccountValue() {
