@@ -1,15 +1,26 @@
 class Resources {
-  constructor(waterLevel, foodLevel) {
-    this.waterLevel = waterLevel;
+  constructor(waterlevel, foodLevel, waterRequirement, foodRequirement) {
+    this.waterRequirement = waterRequirement;
+    this.foodRequirement = foodRequirement;
+
+    this.waterLevel = waterlevel;
     this.foodLevel = foodLevel;
-    this.changeLevelParameter = 2;
+
+    this.watherParameter = 0.3;
+    this.foodParameter = 0.1;
 
     this.reduceResources();
   }
 
-  reduceResources(waterFactor = 1, foodFaktor = 1) {
-    this.waterLevel -= this.changeLevelParameter * waterFactor;
-    this.foodLevel -= this.changeLevelParameter * foodFaktor;
+  reduceResources() {
+    this.waterLevel -= (this.waterRequirement / 1000) * this.watherParameter;
+    this.foodLevel -= (this.foodRequirement / 1000) * this.foodParameter;
+
+    console.log(this.waterLevel);
+  }
+
+  increaseWaterLevel(water) {
+    console.log("zwiększam poziom wody");
   }
 
   getResources() {

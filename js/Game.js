@@ -24,7 +24,10 @@ class Game {
 
     this.waterLevel = 80;
     this.foodLevel = 80;
-    this.reduceResourcesTime = 5000;
+    this.startWaterRequirement = 2000; //ml
+    this.startFoodRequirement = 2000; //kcal
+    this.resourcesIntervalIndex = null;
+    this.reduceResourcesTime = 1000;
 
     this.initEvents();
     this.updateResurces();
@@ -57,6 +60,8 @@ class Game {
 
   startJob(job) {
     this.isAtWork = true;
+    clearInterval(this.resourcesIntervalIndex);
+    this.updateResurces();
 
     this.profession.closeBigPictureJob();
     this.profession.closeJobsWindow();
@@ -90,23 +95,32 @@ class Game {
   }
 
   updateResurces() {
-    this.resources = new Resources(this.waterLevel, this.foodLevel);
+    this.resources = new Resources(
+      this.waterLevel,
+      this.foodLevel,
+      this.startWaterRequirement,
+      this.startFoodRequirement
+    );
 
-    setInterval(() => {
+    this.setResources();
+
+    this.resourcesIntervalIndex = setInterval(() => {
       this.resources.reduceResources();
+
       [this.waterLevel, this.foodLevel] = this.resources.getResources();
 
-      this.waterLevelElement.textContent = `${this.waterLevel}%`;
-      this.foodLevelElement.textContent = `${this.foodLevel}%`;
+      this.setResources();
     }, this.reduceResourcesTime);
+  }
+
+  setResources() {
+    this.waterLevelElement.textContent = `${Math.floor(this.waterLevel)}%`;
+    this.foodLevelElement.textContent = `${Math.floor(this.foodLevel)}%`;
   }
 
   render() {
     this.isAtWork = false;
     this.jobButtonsHandler();
-
-    this.waterLevelElement.textContent = `${this.waterLevel}%`;
-    this.foodLevelElement.textContent = `${this.foodLevel}%`;
 
     this.accountElement.textContent = this.wallet.getAccountValue();
     this.currentSalaryElement.textContent = !this.isAtWork
