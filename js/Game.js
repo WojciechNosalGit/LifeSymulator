@@ -21,10 +21,13 @@ class Game {
     this.jobTime = 1000 * 5; //milisec*sec*min
     this.jobTimerIndex = null;
     this.isAtWork = false;
-    this.waterLevel = 50;
-    this.foodLevel = 50;
+
+    this.waterLevel = 80;
+    this.foodLevel = 80;
+    this.reduceResourcesTime = 5000;
 
     this.initEvents();
+    this.updateResurces();
 
     this.render();
   }
@@ -86,9 +89,24 @@ class Game {
     }
   }
 
+  updateResurces() {
+    this.resources = new Resources(this.waterLevel, this.foodLevel);
+
+    setInterval(() => {
+      this.resources.reduceResources();
+      [this.waterLevel, this.foodLevel] = this.resources.getResources();
+
+      this.waterLevelElement.textContent = `${this.waterLevel}%`;
+      this.foodLevelElement.textContent = `${this.foodLevel}%`;
+    }, this.reduceResourcesTime);
+  }
+
   render() {
     this.isAtWork = false;
     this.jobButtonsHandler();
+
+    this.waterLevelElement.textContent = `${this.waterLevel}%`;
+    this.foodLevelElement.textContent = `${this.foodLevel}%`;
 
     this.accountElement.textContent = this.wallet.getAccountValue();
     this.currentSalaryElement.textContent = !this.isAtWork
