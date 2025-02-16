@@ -1,12 +1,8 @@
 class Grocery {
-  constructor(name, calories, cost, waterContent = 0) {
-    this.name = name;
-    this.calories = calories;
-    this.cost = cost;
-    this.waterContent = waterContent;
-  }
-
-  getInfo() {
-    return `${this.name} - ${this.calories} kcal, ${this.cost} zł, ${this.waterContent} ml wody`;
+  constructor() {
+    this.items = [
+      { name: "Woda", fuel: 1000, cost: 1200 },
+      { name: "Chleb", fuel: 200, cost: 900 },
+    ];
   }
 }

@@ -15,6 +15,8 @@
     <div id="app">
       <h1 class="main-title">life symulator</h1>
       <div class="buttons_container">
+        <button class="buy-grocery button">Kup jedzenie</button>
+        <button class="buy-car button">Kup samochód</button>
         <button id="pick-job" class="pick-job_button button">
           Wybierz zawód
         </button>
@@ -42,17 +44,41 @@
         <div class="character-info">
           <h1>Bezrobotny</h1>
           <p class="current-salary">Może zarobisz</p>
-          <!-- <p class="bonus">Bonus: <span>300 zł</span></p> -->
+          <p class="bonus">Bonus: <span>300 zł</span></p>
         </div>
       </div>
-
-      <div class="grocery">
-        <h2>Sklep</h2>
-        <ul id="grocery-list" class="grocery-list"></ul>
-      </div>
-      <div class="equipment">
-        <h2>Ekwipunek</h2>
-        <ul id="equipment-list" class="equipment-list"></ul>
+      <div id="equipment">
+        <h2 class="equipment-title">Ekwipunek</h2>
+        <p class="part-name">Artykóły spożywcze</p>
+        <div class="equipment-grocery-items">
+          <div class="grocery-item grocery-item_active">
+            <p class="item-icon">🍞</p>
+            <div class="item-amount">2</div>
+          </div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+        </div>
+        <p class="part-name">samochody</p>
+        <div class="cars-items">
+          <div class="cars-item"></div>
+          <div class="cars-item"></div>
+          <div class="cars-item"></div>
+          <div class="cars-item"></div>
+          <div class="cars-item"></div>
+          <div class="cars-item"></div>
+          <div class="cars-item"></div>
+        </div>
       </div>
     </div>
     <script src="js/jobsList.js"></script>

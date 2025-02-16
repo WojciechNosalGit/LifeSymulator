@@ -7,23 +7,25 @@
 }
 
 h1.main-title {
-  text-align: center;
   font-family: "very-punk", sans-serif;
   font-size: 12rem;
   font-weight: 200;
   color: var(--main-color);
   text-shadow: -1px 1px 0px black;
+  text-align: center;
+  margin-bottom: 24px;
 }
 
 .buttons_container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: 120px;
+  max-width: 600px;
+  margin: 16px auto;
 }
 
 .pick-job_button {
-  display: block;
+  background-color: var(--secound-color);
 }
 
 /* --------------------------------- */
