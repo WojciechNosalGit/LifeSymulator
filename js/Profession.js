@@ -54,7 +54,7 @@ class Profession {
   }
 
   setupJobSelectionHandlers() {
-    const professions = [...document.querySelectorAll("li")];
+    const professions = [...document.querySelectorAll("li.profession")];
 
     professions.forEach((item, index) => {
       item.addEventListener("click", () => {
@@ -66,6 +66,8 @@ class Profession {
   showBigPictureJob(index) {
     const job = professions[index]; //jobList.js
     this.selectedJob = job;
+
+    this.jobPopupWindow.innerHTML = "";
 
     this.jobPopupWindow.classList.remove("display-none");
 
@@ -110,10 +112,10 @@ class Profession {
 
   closeBigPictureJob() {
     this.jobPopupWindow.classList.add("display-none");
+    this.jobPopupWindow.innerHTML = "";
   }
 
   getSelectedJob() {
-    console.log(this.selectedJob);
     return this.selectedJob;
   }
 }

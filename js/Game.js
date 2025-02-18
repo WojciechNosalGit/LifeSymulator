@@ -5,6 +5,8 @@ class Game {
     this.closeProfessionListButton = document.querySelector(
       ".close-profession-list_button"
     );
+    this.showShopButton = document.getElementById("buy-grocery");
+
     this.accountElement = document.querySelector(".account span");
     this.charakterNameElement = document.querySelector(".character-info h1");
     this.waterLevelElement = document.querySelector(".water-level span");
@@ -48,6 +50,11 @@ class Game {
       this.profession.closeJobsWindow()
     );
 
+    this.showShopButton.addEventListener("click", () => {
+      this.grocery.addItemsToList();
+      this.grocery.showShopWindow();
+    });
+
     document.addEventListener("click", (event) => {
       if (event.target.classList.contains("job-popup_select")) {
         this.currentJob = this.profession.getSelectedJob();
@@ -60,14 +67,14 @@ class Game {
       this.render();
     });
 
-    // //grocery
-    // document.addEventListener("click", (event) => {
-    //   if (event.target.classList.contains("grocery-item")) {
-    //     const itemIndex = event.target.dataset.index;
-    //     const item = this.grocery.items[itemIndex];
-    //     this.buyItem(item);
-    //   }
-    // });
+    // shop - grocery
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("shop-item")) {
+        const itemIndex = event.target.dataset.index;
+        const item = this.grocery.items[itemIndex];
+        this.buyGroceryFromShop(item);
+      }
+    });
   }
 
   startJob(job) {
@@ -137,17 +144,13 @@ class Game {
 
   // //grocery
 
-  buyItem(item) {
+  buyGroceryFromShop(item) {
     this.equipment.addItem(item);
-    this.equipment.render(this.equipmentContainer);
   }
 
   render() {
     this.isAtWork = false;
     this.jobButtonsHandler();
-
-    // this.grocery.render(this.groceryContainer);
-    // this.equipment.render(this.equipmentContainer);
 
     clearInterval(this.resourcesIntervalIndex);
     this.updateResurces(

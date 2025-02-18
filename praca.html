@@ -15,8 +15,10 @@
     <div id="app">
       <h1 class="main-title">life symulator</h1>
       <div class="buttons_container">
-        <button class="buy-grocery button">Kup jedzenie</button>
-        <button class="buy-car button">Kup samochód</button>
+        <button id="buy-grocery" class="buy-grocery button">
+          Kup jedzenie
+        </button>
+        <button id="buy-car" class="buy-car button">Kup samochód</button>
         <button id="pick-job" class="pick-job_button button">
           Wybierz zawód
         </button>
@@ -34,6 +36,20 @@
       </div>
 
       <div class="job-popup display-none"></div>
+
+      <div id="shop-list_container" class="display-none">
+        <div class="button-wrap">
+          <button class="close-shop-list_button">&times;</button>
+        </div>
+        <h1 class="shop-list-title">Sklep spożywczy</h1>
+        <ul id="shop-list" class="shop-list">
+          <!-- <li class="shop-item">
+            <p class="shop-item-icon">🍞</p>
+            <p class="shop-item-price">20 zł</p>
+            <p class="shop-item-fuel">1000 kcal</p>
+          </li> -->
+        </ul>
+      </div>
 
       <div class="character">
         <div class="character-stats">
@@ -81,6 +97,7 @@
         </div>
       </div>
     </div>
+    <div id="overlay" class="overlay"></div>
     <script src="js/jobsList.js"></script>
     <script src="js/Profession.js"></script>
     <script src="js/Salary.js"></script>
