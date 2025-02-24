@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/professions.css" />
+    <link rel="stylesheet" href="style/job.css" />
+    <link rel="stylesheet" href="style/equpment.css" />
+    <link rel="stylesheet" href="style/grocery.css" />
+    <link rel="stylesheet" href="style/game.css" />
+    <title>Life symulator</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="main-title">life symulator</h1>
+      <div class="buttons_container">
+        <button id="buy-grocery" class="buy-grocery button">
+          Kup jedzenie
+        </button>
+        <button id="buy-car" class="buy-car button">Kup samochód</button>
+        <button id="pick-job" class="pick-job_button button">
+          Wybierz zawód
+        </button>
+        <button id="quit-job" class="quit-job_button button display-none">
+          Zrezygnuj
+        </button>
+      </div>
+
+      <div class="profession-list_container display-none">
+        <div class="button-wrap">
+          <button class="close-profession-list_button">&times;</button>
+        </div>
+        <h1>Lista Zawodów</h1>
+        <ul id="profession-list" class="profession-list"></ul>
+      </div>
+
+      <div class="job-popup display-none"></div>
+
+      <div id="shop-list_container" class="display-none">
+        <div class="button-wrap">
+          <button class="close-shop-list_button">&times;</button>
+        </div>
+        <h1 class="shop-list-title">Sklep spożywczy</h1>
+        <ul id="shop-list" class="shop-list">
+          <!-- <li class="shop-item">
+            <p class="shop-item-icon">🍞</p>
+            <p class="shop-item-price">20 zł</p>
+            <p class="shop-item-fuel">1000 kcal</p>
+          </li> -->
+        </ul>
+      </div>
+
+      <div class="character">
+        <div class="character-stats">
+          <p class="account">💰 <span>awaria</span></p>
+          <p class="water-level">💧 <span>50%</span></p>
+          <p class="food-level">🍖 <span>50%</span></p>
+        </div>
+        <div class="character-info">
+          <h1>Bezrobotny</h1>
+          <p class="current-salary">Może zarobisz</p>
+          <p class="bonus">Bonus: <span>300 zł</span></p>
+        </div>
+      </div>
+      <div id="equipment">
+        <h2 class="equipment-title">Ekwipunek</h2>
+        <p class="part-name">Artykóły spożywcze</p>
+        <div class="equipment-grocery-items">
+          <div class="grocery-item grocery-item_active">
+            <p class="item-icon">🍞</p>
+            <div class="item-amount">2</div>
+          </div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+          <div class="grocery-item"></div>
+        </div>
+        <p class="part-name">samochody</p>
+        <div class="cars-items">
+          <div class="cars-item"></div>
+          <div class="cars-item"></div>
+          <div class="cars-item"></div>
+          <div class="cars-item"></div>
+          <div class="cars-item"></div>
+          <div class="cars-item"></div>
+          <div class="cars-item"></div>
+        </div>
+      </div>
+    </div>
+    <div id="overlay" class="overlay"></div>
+    <script src="js/jobsList.js"></script>
+    <script src="js/Profession.js"></script>
+    <script src="js/Salary.js"></script>
+    <script src="js/Wallet.js"></script>
+    <script src="js/Resources.js"></script>
+    <script src="js/Grocery.js"></script>
+    <script src="js/Equipment.js"></script>
+    <script src="js/Game.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
