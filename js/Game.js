@@ -167,6 +167,8 @@ class Game {
     if (this.wallet.checkIfEnoughMoney(item.cost)) {
       this.equipment.useItem(index);
       this.wallet.substractMoneyFromAccont(item.cost);
+      this.resources.increaseResources(item.fuel);
+      console.log(item.fuel);
     }
   }
 

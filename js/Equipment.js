@@ -1,7 +1,7 @@
 class Equipment {
   constructor() {
     this.items = [
-      { name: "Jabłko", icon: "🍏", fuel: 150, cost: 20, amount: 3 },
+      { name: "Jabłko", icon: "🍏", fuel: 1500, cost: 20, amount: 3 },
       { name: "Chleb", icon: "🍞", fuel: 500, cost: 90, amount: 2 },
       { name: "Woda", icon: "💧", fuel: 200, cost: 30, amount: 2 },
     ];
