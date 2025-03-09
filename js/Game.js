@@ -19,9 +19,10 @@ class Game {
 
     this.salary = new Salary();
     this.profession = new Profession();
-    this.wallet = new Wallet();
+    this.wallet = new Wallet(200);
     this.grocery = new Grocery();
     this.equipment = new Equipment();
+    this.sound = new Sound();
 
     this.currentJob = null;
     this.currentSalary = 0;
@@ -69,16 +70,27 @@ class Game {
 
     // shop - grocery
     document.addEventListener("click", (event) => {
-      if (event.target.classList.contains("shop-item")) {
-        const itemIndex = event.target.dataset.index;
+      const shopItem = event.target.closest(".shop-item");
+
+      if (shopItem) {
+        const itemIndex = shopItem.dataset.index;
         const item = this.grocery.items[itemIndex];
         this.buyGroceryFromShop(item);
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      const groceryItem = event.target.closest(".grocery-item_active");
+      if (groceryItem) {
+        const itemIndex = groceryItem.dataset.index;
+        this.useGroceryItem(itemIndex);
       }
     });
   }
 
   startJob(job) {
     this.isAtWork = true;
+
     clearInterval(this.resourcesIntervalIndex);
     this.updateResurces(
       this.waterLevel,
@@ -143,14 +155,26 @@ class Game {
   }
 
   // //grocery
-
   buyGroceryFromShop(item) {
+    this.sound.play(this.sound.click);
     this.equipment.addItem(item);
+  }
+
+  useGroceryItem(index) {
+    this.sound.play(this.sound.click);
+    const item = this.equipment.getItem(index);
+
+    if (this.wallet.checkIfEnoughMoney(item.cost)) {
+      this.equipment.useItem(index);
+      this.wallet.substractMoneyFromAccont(item.cost);
+    }
   }
 
   render() {
     this.isAtWork = false;
     this.jobButtonsHandler();
+
+    this.equipment.renderEquipment();
 
     clearInterval(this.resourcesIntervalIndex);
     this.updateResurces(
@@ -160,7 +184,8 @@ class Game {
       this.basicFoodRequirement
     );
 
-    this.accountElement.textContent = this.wallet.getAccountValue();
+    this.wallet.render();
+
     this.currentSalaryElement.textContent = !this.isAtWork
       ? `Nic nie zarabiasz`
       : this.currentSalary;

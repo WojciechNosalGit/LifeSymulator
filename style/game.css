@@ -28,6 +28,14 @@ h1.main-title {
   background-color: var(--secound-color);
 }
 
+.quit-job_button {
+  background-color: var(--red);
+
+  &:hover {
+    background-color: var(--orange);
+  }
+}
+
 /* --------------------------------- */
 
 .character {

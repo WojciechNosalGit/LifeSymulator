@@ -57,6 +57,7 @@ class Grocery {
 
   addItemsToList() {
     const groceryList = document.getElementById("shop-list");
+    groceryList.innerHTML = "";
 
     this.items.forEach((item, index) => {
       const li = this.createItemElement(item, index);

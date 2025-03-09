@@ -9,6 +9,7 @@
   --main-color: #00bcd5;
   --secound-color: #27ae60;
   --orange: rgb(226, 136, 18);
+  --red: #f0003c;
 }
 
 @font-face {
@@ -68,6 +69,7 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 100ms ease-in-out;
   text-transform: uppercase;
+  cursor: pointer;
 
   &:hover {
     background-color: var(--main-color);

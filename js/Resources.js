@@ -17,10 +17,6 @@ class Resources {
     this.foodLevel -= (this.foodRequirement / 1000) * this.foodParameter;
   }
 
-  increaseWaterLevel(water) {
-    console.log("zwiększam poziom wody");
-  }
-
   getResources() {
     return [this.waterLevel, this.foodLevel];
   }

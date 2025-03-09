@@ -42,6 +42,7 @@
 
 .equipment-grocery-items .grocery-item_active {
   background-color: var(--main-color);
+  cursor: pointer;
 }
 
 p.item-icon {

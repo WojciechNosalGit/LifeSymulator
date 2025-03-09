@@ -1,6 +1,14 @@
 class Equipment {
   constructor() {
-    this.items = [];
+    this.items = [
+      { name: "Jabłko", icon: "🍏", fuel: 150, cost: 20, amount: 3 },
+      { name: "Chleb", icon: "🍞", fuel: 500, cost: 90, amount: 2 },
+      { name: "Woda", icon: "💧", fuel: 200, cost: 30, amount: 2 },
+    ];
+  }
+
+  getItem(index) {
+    return this.items[index];
   }
 
   addItem(item) {
@@ -8,7 +16,12 @@ class Equipment {
     const existingItem = this.items.find((i) => i.icon === item.icon);
     //if exists increase amount
     if (existingItem) {
-      if (existingItem.amount >= 8) return alert("Max 8"); //max 8 items
+      if (existingItem.amount >= 8) {
+        //alert sound
+        return alert(
+          "Nie bądź zachłanny! Masz już maksymalną ilość tego przedmiotu!"
+        );
+      }
       existingItem.amount += 1;
     } else {
       //if not set to 1
@@ -17,6 +30,21 @@ class Equipment {
     }
 
     this.renderEquipment();
+  }
+
+  useItem(index) {
+    if (this.items[index].amount > 0) {
+      this.items[index].amount -= 1;
+    }
+
+    if (this.items[index].amount === 0) {
+      this.items.splice(index, 1);
+    }
+
+    this.renderEquipment();
+
+    // console.log(this.items[index]);
+    return this.items[index];
   }
 
   renderEquipment() {

@@ -12,6 +12,10 @@
     <title>Life symulator</title>
   </head>
   <body>
+    <div class="assets">
+      <audio id="click" src="assets/sounds/click.wav"></audio>
+    </div>
+
     <div id="app">
       <h1 class="main-title">life symulator</h1>
       <div class="buttons_container">
@@ -60,17 +64,18 @@
         <div class="character-info">
           <h1>Bezrobotny</h1>
           <p class="current-salary">Może zarobisz</p>
-          <p class="bonus">Bonus: <span>300 zł</span></p>
+          <!-- <p class="bonus">Bonus: <span>300 zł</span></p> -->
         </div>
       </div>
       <div id="equipment">
         <h2 class="equipment-title">Ekwipunek</h2>
         <p class="part-name">Artykóły spożywcze</p>
         <div class="equipment-grocery-items">
-          <div class="grocery-item grocery-item_active">
-            <p class="item-icon">🍞</p>
-            <div class="item-amount">2</div>
-          </div>
+          <!-- <div class="grocery-item grocery-item_active">
+            <p class="item-icon"></p>
+            <div class="item-amount"></div>
+          </div> -->
+          <div class="grocery-item"></div>
           <div class="grocery-item"></div>
           <div class="grocery-item"></div>
           <div class="grocery-item"></div>
@@ -99,6 +104,7 @@
     </div>
     <div id="overlay" class="overlay"></div>
     <script src="js/jobsList.js"></script>
+    <script src="js/Sound.js"></script>
     <script src="js/Profession.js"></script>
     <script src="js/Salary.js"></script>
     <script src="js/Wallet.js"></script>
