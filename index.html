@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style/style.css" />
     <link rel="stylesheet" href="style/professions.css" />
-    <link rel="stylesheet" href="style/job.css" />
+    <link rel="stylesheet" href="style/job-popup.css" />
     <link rel="stylesheet" href="style/equpment.css" />
     <link rel="stylesheet" href="style/grocery.css" />
+    <link rel="stylesheet" href="style/vehicle.css" />
     <link rel="stylesheet" href="style/game.css" />
     <title>Life symulator</title>
   </head>
@@ -22,7 +23,9 @@
         <button id="buy-grocery" class="buy-grocery button">
           Kup jedzenie
         </button>
-        <button id="buy-car" class="buy-car button">Kup samochód</button>
+        <button id="buy-vehicle" class="buy-vehicle button">
+          Kup samochód
+        </button>
         <button id="pick-job" class="pick-job_button button">
           Wybierz zawód
         </button>
@@ -39,7 +42,8 @@
         <ul id="profession-list" class="profession-list"></ul>
       </div>
 
-      <div class="job-popup display-none"></div>
+      <div class="job-popup popup display-none"></div>
+      <div class="vehicle-popup popup display-none"></div>
 
       <div id="shop-list_container" class="display-none">
         <div class="button-wrap">
@@ -51,6 +55,22 @@
             <p class="shop-item-icon">🍞</p>
             <p class="shop-item-price">20 zł</p>
             <p class="shop-item-fuel">1000 kcal</p>
+          </li> -->
+        </ul>
+      </div>
+
+      <div class="vehicle-list_container display-none">
+        <div class="button-wrap">
+          <button class="close-vehicle-list_button">&times;</button>
+        </div>
+        <h1>Lista pojazdów</h1>
+        <ul id="vehicle-list" class="vehicle-list">
+          <!-- <li class="vehicle">
+            <img src="" alt="Pojazd" />
+            <div class="text-content">
+              <h2>Pojazd</h2>
+              <p class="vehicle-cost">234 000 PLN</p>
+            </div>
           </li> -->
         </ul>
       </div>
@@ -110,6 +130,7 @@
     <script src="js/Wallet.js"></script>
     <script src="js/Resources.js"></script>
     <script src="js/Grocery.js"></script>
+    <script src="js/Vehicle.js"></script>
     <script src="js/Equipment.js"></script>
     <script src="js/Game.js"></script>
     <script src="main.js"></script>

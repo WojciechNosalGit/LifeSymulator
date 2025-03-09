@@ -1,0 +1,88 @@
+.vehicle-list_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  max-width: 500px;
+  padding: 16px;
+  padding-top: 4px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, var(--main-color) 18%, white 8%);
+  color: var(--black);
+  height: 80vh;
+  overflow-y: auto;
+  font-size: 1.6rem;
+  z-index: 10;
+}
+
+.close-vehicle-list_button {
+  background: none;
+  border: none;
+  font-size: 2em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 10;
+}
+
+.close-vehicle-list_button:hover {
+  transform: rotate(90deg);
+}
+
+.vehicle-list_container h1 {
+  border-radius: 4px;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+  font-size: 1.6em;
+  background-color: #fff;
+  padding: 8px;
+}
+
+.vehicle-list {
+  list-style: none;
+  width: 100%;
+}
+
+.vehicle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #fff;
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.vehicle:hover {
+  background-color: var(--main-color);
+  transition: all 300ms;
+}
+
+.vehicle:hover .vehicle-cost {
+  color: white;
+}
+
+.vehicle img {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.vehicle h2 {
+  color: var(--black);
+  font-size: 1.4em;
+  margin-bottom: 8px;
+}
+
+.vehicle-cost {
+  color: var(--secound-color);
+  margin-bottom: 8px;
+  transition: color 300ms ease-in-out;
+}

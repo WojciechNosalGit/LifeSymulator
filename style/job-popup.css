@@ -1,4 +1,5 @@
-.job-popup {
+.job-popup,
+.popup {
   width: 500px;
   height: 80vh;
   border-radius: 8px;
@@ -31,7 +32,8 @@
   font-size: 1.8rem;
   color: var(--secound-color);
 }
-.job-popup .description {
+.job-popup .description,
+.popup .description {
   margin-top: 16px;
   padding: 8px;
   background: white;
@@ -59,22 +61,6 @@
 .skills p span.bonus {
   color: var(--orange);
 }
-/* .close-job-popup_btn {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  background: none;
-  border: none;
-  font-size: 3.4rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
-  z-index: 10;
-}
-
-.close-job-popup_btn:hover {
-  transform: rotate(90deg);
-} */
 
 .button_container {
   display: flex;

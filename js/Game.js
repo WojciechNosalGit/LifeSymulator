@@ -6,19 +6,18 @@ class Game {
       ".close-profession-list_button"
     );
     this.showShopButton = document.getElementById("buy-grocery");
+    this.showVehiclesButton = document.getElementById("buy-vehicle");
 
     this.accountElement = document.querySelector(".account span");
     this.charakterNameElement = document.querySelector(".character-info h1");
 
     this.currentSalaryElement = document.querySelector(".current-salary");
 
-    this.groceryContainer = document.getElementById("grocery");
-    this.equipmentContainer = document.getElementById("equipment");
-
     this.salary = new Salary();
     this.profession = new Profession();
     this.wallet = new Wallet(200);
     this.grocery = new Grocery();
+    this.vehicle = new Vehicle();
     this.equipment = new Equipment();
     this.resources = new Resources();
     this.sound = new Sound();
@@ -30,7 +29,7 @@ class Game {
     this.isAtWork = false;
 
     this.resourcesIntervalIndex = null;
-    this.reduceResourcesTime = 1000;
+    this.reduceResourcesTime = 3000;
 
     this.initEvents();
 
@@ -49,6 +48,10 @@ class Game {
     this.showShopButton.addEventListener("click", () => {
       this.grocery.addItemsToList();
       this.grocery.showShopWindow();
+    });
+
+    this.showVehiclesButton.addEventListener("click", () => {
+      this.vehicle.showVehiclesWindow();
     });
 
     document.addEventListener("click", (event) => {
