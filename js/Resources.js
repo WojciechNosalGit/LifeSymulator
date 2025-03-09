@@ -1,27 +1,60 @@
 class Resources {
-  constructor(waterlevel, foodLevel, waterRequirement, foodRequirement) {
-    this.waterRequirement = waterRequirement * 1000;
-    this.foodRequirement = foodRequirement;
+  constructor() {
+    this.waterLevelElement = document.querySelector(".water-level span");
+    this.foodLevelElement = document.querySelector(".food-level span");
 
-    this.waterLevel = waterlevel; // % of water
-    this.foodLevel = foodLevel; // % of food
+    this.waterContainer = 6000;
+    this.foodContainer = 5000;
 
-    this.watherParameter = 0.3;
-    this.foodParameter = 0.1;
+    this.waterRequirement = 2000; // demand for water
+    this.foodRequirement = 2000; // demand for food
 
-    this.reduceResources();
+    this.startLevel = 50;
+    this.startWater = this.waterContainer * (this.startLevel / 100);
+    this.startFood = this.foodContainer * (this.startLevel / 100);
+
+    this.updateConsumptionRate();
   }
 
-  getResources() {
-    return [this.waterLevel, this.foodLevel];
+  updateConsumptionRate(
+    waterRequirement = this.waterRequirement,
+    foodRequirement = this.foodRequirement
+  ) {
+    this.waterRequirement = waterRequirement;
+    this.foodRequirement = foodRequirement;
+
+    this.consumptionRate = {
+      water: (this.waterRequirement / 2000) * 20,
+      food: (this.foodRequirement / 2000) * 8,
+    };
   }
 
   reduceResources() {
-    this.waterLevel -= (this.waterRequirement / 1000) * this.watherParameter;
-    this.foodLevel -= (this.foodRequirement / 1000) * this.foodParameter;
+    this.startWater = Math.max(0, this.startWater - this.consumptionRate.water);
+    this.startFood = Math.max(0, this.startFood - this.consumptionRate.food);
 
-    console.log(this.waterRequirement, this.foodRequirement);
+    if (this.startWater === 0 || this.startFood === 0) {
+      return alert("Jesteś wyczerpany! KONIEC GRY!");
+    }
+
+    this.render();
   }
 
-  increaseResources(water, food) {}
+  eat(name, amount) {
+    if (name === "Woda") {
+      this.startWater = Math.min(this.waterContainer, this.startWater + amount);
+    } else {
+      this.startFood = Math.min(this.foodContainer, this.startFood + amount);
+    }
+
+    this.render();
+  }
+
+  render() {
+    const waterPercentage = (this.startWater / this.waterContainer) * 100;
+    const foodPercentage = (this.startFood / this.foodContainer) * 100;
+
+    this.waterLevelElement.textContent = `${waterPercentage.toFixed()}%`;
+    this.foodLevelElement.textContent = `${foodPercentage.toFixed()}%`;
+  }
 }

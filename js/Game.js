@@ -9,8 +9,6 @@ class Game {
 
     this.accountElement = document.querySelector(".account span");
     this.charakterNameElement = document.querySelector(".character-info h1");
-    this.waterLevelElement = document.querySelector(".water-level span");
-    this.foodLevelElement = document.querySelector(".food-level span");
 
     this.currentSalaryElement = document.querySelector(".current-salary");
 
@@ -22,20 +20,17 @@ class Game {
     this.wallet = new Wallet(200);
     this.grocery = new Grocery();
     this.equipment = new Equipment();
+    this.resources = new Resources();
     this.sound = new Sound();
 
     this.currentJob = null;
     this.currentSalary = 0;
-    this.jobTime = 1000 * 5; //milisec*sec*min
+    this.jobTime = 1000 * 60; //milisec*sec*min
     this.jobTimerIndex = null;
     this.isAtWork = false;
 
-    this.waterLevel = 80;
-    this.foodLevel = 80;
-    this.basicWaterRequirement = 2; //l
-    this.basicFoodRequirement = 2000; //kcal
     this.resourcesIntervalIndex = null;
-    this.reduceResourcesTime = 3000;
+    this.reduceResourcesTime = 1000;
 
     this.initEvents();
 
@@ -92,12 +87,7 @@ class Game {
     this.isAtWork = true;
 
     clearInterval(this.resourcesIntervalIndex);
-    this.updateResurces(
-      this.waterLevel,
-      this.foodLevel,
-      this.currentJob.water,
-      this.currentJob.food
-    );
+    this.updateResources(job.water * 1000, job.food);
 
     this.profession.closeBigPictureJob();
     this.profession.closeJobsWindow();
@@ -130,46 +120,29 @@ class Game {
     }
   }
 
-  updateResurces(waterLevel, foodLevel, waterRequirement, foodRequirement) {
-    this.resources = new Resources(
-      waterLevel,
-      foodLevel,
-      waterRequirement,
-      foodRequirement
-    );
-
-    this.setResources();
-
+  updateResources(waterConsumption, foodConsumption) {
+    this.resources.updateConsumptionRate(waterConsumption, foodConsumption);
     this.resourcesIntervalIndex = setInterval(() => {
       this.resources.reduceResources();
-
-      [this.waterLevel, this.foodLevel] = this.resources.getResources();
-
-      this.setResources();
     }, this.reduceResourcesTime);
-  }
-
-  setResources() {
-    this.waterLevelElement.textContent = `${Math.floor(this.waterLevel)}%`;
-    this.foodLevelElement.textContent = `${Math.floor(this.foodLevel)}%`;
   }
 
   // //grocery
   buyGroceryFromShop(item) {
     this.sound.play(this.sound.click);
-    this.equipment.addItem(item);
+
+    if (this.wallet.checkIfEnoughMoney(item.cost)) {
+      this.equipment.addItem(item);
+      this.wallet.substractMoneyFromAccont(item.cost);
+    }
   }
 
   useGroceryItem(index) {
     this.sound.play(this.sound.click);
     const item = this.equipment.getItem(index);
 
-    if (this.wallet.checkIfEnoughMoney(item.cost)) {
-      this.equipment.useItem(index);
-      this.wallet.substractMoneyFromAccont(item.cost);
-      this.resources.increaseResources(item.fuel);
-      console.log(item.fuel);
-    }
+    this.equipment.useItem(index);
+    this.resources.eat(item.name, item.fuel);
   }
 
   render() {
@@ -177,16 +150,10 @@ class Game {
     this.jobButtonsHandler();
 
     this.equipment.renderEquipment();
+    this.wallet.render();
 
     clearInterval(this.resourcesIntervalIndex);
-    this.updateResurces(
-      this.waterLevel,
-      this.foodLevel,
-      this.basicWaterRequirement,
-      this.basicFoodRequirement
-    );
-
-    this.wallet.render();
+    this.updateResources();
 
     this.currentSalaryElement.textContent = !this.isAtWork
       ? `Nic nie zarabiasz`

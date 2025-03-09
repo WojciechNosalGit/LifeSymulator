@@ -1,7 +1,7 @@
 class Equipment {
   constructor() {
     this.items = [
-      { name: "Jabłko", icon: "🍏", fuel: 1500, cost: 20, amount: 3 },
+      { name: "Jabłko", icon: "🍏", fuel: 150, cost: 20, amount: 3 },
       { name: "Chleb", icon: "🍞", fuel: 500, cost: 90, amount: 2 },
       { name: "Woda", icon: "💧", fuel: 200, cost: 30, amount: 2 },
     ];
@@ -73,25 +73,5 @@ class Equipment {
 
       equipmentList.appendChild(div);
     }
-  }
-
-  createActiveItemElement({ icon, amount }, index) {
-    const div = document.createElement("div");
-
-    div.classList.add("grocery-item_active");
-    div.dataset.index = index;
-
-    const pIcon = document.createElement("p");
-    pIcon.classList.add("item-icon");
-    pIcon.textContent = icon;
-
-    const divAmount = document.createElement("div");
-    divAmount.classList.add("item-amount");
-    divAmount.textContent = amount;
-
-    div.appendChild(pIcon);
-    div.appendChild(divAmount);
-
-    return div;
   }
 }
