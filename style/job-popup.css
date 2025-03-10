@@ -72,7 +72,8 @@
   width: 100%;
 }
 
-.job-popup_back {
+.job-popup_back,
+.back-button {
   background-color: white;
   border: 4px solid var(--main-color);
 
@@ -82,7 +83,8 @@
   }
 }
 
-.job-popup_select {
+.job-popup_select,
+.select-button {
   background-color: var(--secound-color);
 
   &:hover {

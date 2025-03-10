@@ -15,7 +15,7 @@ class Game {
 
     this.salary = new Salary();
     this.profession = new Profession();
-    this.wallet = new Wallet(200);
+    this.wallet = new Wallet(20000);
     this.grocery = new Grocery();
     this.vehicle = new Vehicle();
     this.equipment = new Equipment();
@@ -23,6 +23,7 @@ class Game {
     this.sound = new Sound();
 
     this.currentJob = null;
+    this.currentVehicle = null;
     this.currentSalary = 0;
     this.jobTime = 1000 * 60; //milisec*sec*min
     this.jobTimerIndex = null;
@@ -84,6 +85,14 @@ class Game {
         this.useGroceryItem(itemIndex);
       }
     });
+
+    // shop - vehicle
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("vehicle-popup_select")) {
+        this.currentVehicle = this.vehicle.getSelectedVehicle();
+        this.buyVehicle(this.currentVehicle);
+      }
+    });
   }
 
   startJob(job) {
@@ -135,8 +144,8 @@ class Game {
     this.sound.play(this.sound.click);
 
     if (this.wallet.checkIfEnoughMoney(item.cost)) {
-      this.equipment.addItem(item);
       this.wallet.substractMoneyFromAccont(item.cost);
+      this.equipment.addItem(item);
     }
   }
 
@@ -146,6 +155,17 @@ class Game {
 
     this.equipment.useItem(index);
     this.resources.eat(item.name, item.fuel);
+  }
+
+  //vehicle
+  buyVehicle(vehicle) {
+    this.sound.play(this.sound.click);
+    if (this.wallet.checkIfEnoughMoney(vehicle.price)) {
+      this.wallet.substractMoneyFromAccont(vehicle.price);
+      this.equipment.addItem(vehicle, "vehicle");
+      this.vehicle.closeVehiclesWindow();
+      this.vehicle.closeBigPictureVehicle();
+    }
   }
 
   render() {

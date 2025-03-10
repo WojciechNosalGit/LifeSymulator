@@ -3,17 +3,25 @@ class Equipment {
     this.items = [
       { name: "Jabłko", icon: "🍏", fuel: 150, cost: 20, amount: 3 },
     ];
+    this.vehicles = [
+      { name: "Fiat 126p", icon: "🚗", fuel: 100, price: 2000, amount: 1 },
+    ];
   }
 
   getItem(index) {
     return this.items[index];
   }
 
-  addItem(item) {
+  addItem(item, type = "grocery") {
+    const collection = type === "grocery" ? this.items : this.vehicles;
     //check if item already exists
-    const existingItem = this.items.find((i) => i.icon === item.icon);
+    const existingItem = collection.find((i) => i.name === item.name);
     //if exists increase amount
     if (existingItem) {
+      //only one vehicle
+      if (type !== "grocery")
+        return alert("Nie możesz mieć więcej niż jeden pojazd!");
+      //max 8 items
       if (existingItem.amount >= 8) {
         //alert sound
         return alert(
@@ -24,9 +32,8 @@ class Equipment {
     } else {
       //if not set to 1
       item.amount = 1;
-      this.items.push(item);
+      collection.push(item);
     }
-
     this.renderEquipment();
   }
 
@@ -41,13 +48,14 @@ class Equipment {
 
     this.renderEquipment();
 
-    // console.log(this.items[index]);
     return this.items[index];
   }
 
   renderEquipment() {
     const equipmentList = document.querySelector(".equipment-grocery-items");
+    const vehicleList = document.querySelector(".equipment-vehicle-items");
     equipmentList.innerHTML = "";
+    vehicleList.innerHTML = "";
 
     for (let i = 0; i < 14; i++) {
       const div = document.createElement("div");
@@ -70,6 +78,30 @@ class Equipment {
       }
 
       equipmentList.appendChild(div);
+    }
+
+    for (let i = 0; i < 7; i++) {
+      const div = document.createElement("div");
+      div.classList.add("vehicle-item");
+
+      if (this.vehicles[i]) {
+        div.classList.add("vehicle-item_active");
+        div.dataset.index = i;
+
+        const image = document.createElement("img");
+        image.classList.add("vehicle-item-img");
+        image.src = `../assets/images/auto.png`;
+        image.alt = this.vehicles[i].name;
+
+        // const divAmount = document.createElement("div");
+        // divAmount.classList.add("item-amount");
+        // divAmount.textContent = this.vehicles[i].amount;
+
+        div.appendChild(image);
+        // div.appendChild(divAmount);
+      }
+
+      vehicleList.appendChild(div);
     }
   }
 }

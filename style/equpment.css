@@ -23,14 +23,14 @@
 }
 
 .equipment-grocery-items,
-.cars-items {
+.equipment-vehicle-items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
   gap: 16px;
 }
 
 .equipment-grocery-items .grocery-item,
-.cars-item {
+.vehicle-item {
   position: relative;
   width: 60px;
   height: 60px;
@@ -40,7 +40,8 @@
   text-align: center;
 }
 
-.equipment-grocery-items .grocery-item_active {
+.equipment-grocery-items .grocery-item_active,
+.equipment-vehicle-items .vehicle-item_active {
   background-color: var(--main-color);
   cursor: pointer;
 }
@@ -64,4 +65,11 @@ p.item-icon {
   justify-content: center;
   padding-left: 2px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.vehicle-item_active img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
 }

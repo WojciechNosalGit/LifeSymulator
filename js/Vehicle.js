@@ -97,9 +97,11 @@ class Vehicle {
 
     this.vehiclePopupWindow.innerHTML = this.createJobPopupHTML(vehicle);
 
-    document.querySelector(".job-popup_back").addEventListener("click", (e) => {
-      this.closeBigPictureJob();
-    });
+    document
+      .querySelector(".vehicle-popup_back")
+      .addEventListener("click", () => {
+        this.closeBigPictureVehicle();
+      });
   }
 
   createJobPopupHTML(vehicle) {
@@ -120,9 +122,18 @@ class Vehicle {
         </div>
         
           <div class="button_container">
-              <button class="vehicle-popup_back button">Cofnij</button>
-              <button class="vehicle-popup_select button">Wybierz</button>
+              <button class="vehicle-popup_back back-button button">Cofnij</button>
+              <button class="vehicle-popup_select select-button button">Wybierz</button>
             </div>
       `;
+  }
+
+  closeBigPictureVehicle() {
+    this.vehiclePopupWindow.classList.add("display-none");
+    this.vehiclePopupWindow.innerHTML = "";
+  }
+
+  getSelectedVehicle() {
+    return this.selectedVehicle;
   }
 }
