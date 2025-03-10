@@ -1,11 +1,9 @@
 class Equipment {
   constructor() {
     this.items = [
-      { name: "Jabłko", icon: "🍏", fuel: 150, cost: 20, amount: 3 },
+      { name: "Jabłko", icon: "🍏", fuel: 150, cost: 20, amount: 1 },
     ];
-    this.vehicles = [
-      { name: "Fiat 126p", icon: "🚗", fuel: 100, price: 2000, amount: 1 },
-    ];
+    this.vehicles = [];
   }
 
   getItem(index) {

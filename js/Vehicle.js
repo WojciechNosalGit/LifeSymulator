@@ -2,25 +2,187 @@ class Vehicle {
   constructor() {
     this.vehicles = [
       {
-        name: "Samochód",
-        price: 5000,
-        image: "car.png",
+        name: "Ford Mustang",
+        price: 50000,
+        image: "mustang.png",
         description:
-          "Samochód to jedno z podstawowych środków transportu. Umożliwia szybkie przemieszczanie się z miejsca na miejsce.",
+          "Legendarny amerykański muscle car o agresywnym wyglądzie i potężnym silniku.",
+        features: ["5.0L V8", "Klasyczny design", "Sportowe zawieszenie"],
       },
       {
-        name: "Motocykl",
-        price: 2000,
-        image: "motorcycle.png",
+        name: "Tesla Model S",
+        price: 80000,
+        image: "tesla_model_s.png",
         description:
-          "Motocykl to jednoślad, który pozwala na szybkie przemieszczanie się z miejsca na miejsce.",
+          "Nowoczesny elektryczny sedan, który łączy luksus z niesamowitymi osiągami.",
+        features: ["Autopilot", "Zasięg 600 km", "0-100 km/h w 2.1s"],
       },
       {
-        name: "Rower",
-        price: 500,
-        image: "bike.png",
+        name: "Volkswagen Golf GTI",
+        price: 35000,
+        image: "golf_gti.png",
         description:
-          "Rower to pojazd, który pozwala na szybkie przemieszczanie się z miejsca na miejsce.",
+          "Kompaktowy hot hatch, który oferuje świetne osiągi i codzienną praktyczność.",
+        features: ["Turbo 2.0L", "Skrzynia DSG", "Sportowe fotele"],
+      },
+      {
+        name: "BMW M3",
+        price: 70000,
+        image: "bmw_m3.png",
+        description:
+          "Sportowy sedan z niemiecką precyzją i mocnym silnikiem R6 turbo.",
+        features: ["Drift Mode", "Moc 510 KM", "Carbonowe dodatki"],
+      },
+      {
+        name: "Audi R8",
+        price: 150000,
+        image: "audi_r8.png",
+        description:
+          "Supersamochód z centralnie umieszczonym silnikiem V10 i napędem quattro.",
+        features: ["V10 5.2L", "Napęd AWD", "Agresywny wygląd"],
+      },
+      {
+        name: "Lamborghini Aventador",
+        price: 400000,
+        image: "lamborghini_aventador.png",
+        description:
+          "Ikona supersamochodów z potężnym silnikiem V12 i wyjątkowym designem.",
+        features: ["6.5L V12", "Drzwi otwierane do góry", "Napęd AWD"],
+      },
+      {
+        name: "Porsche 911 Turbo S",
+        price: 200000,
+        image: "porsche_911.png",
+        description: "Perfekcyjna kombinacja luksusu, osiągów i technologii.",
+        features: ["Silnik z tyłu", "Launch Control", "Aktywne aerodynamika"],
+      },
+      {
+        name: "Dodge Charger Hellcat",
+        price: 85000,
+        image: "dodge_charger.png",
+        description: "Muscle car z piekielnym V8 o mocy ponad 700 KM.",
+        features: ["Supercharged V8", "Tryb driftu", "Głośny wydech"],
+      },
+      {
+        name: "Harley-Davidson Fat Boy",
+        price: 25000,
+        image: "harley_fatboy.png",
+        description: "Kultowy motocykl cruiser z niepowtarzalnym brzmieniem.",
+        features: [
+          "Silnik Milwaukee-Eight",
+          "Chromowane elementy",
+          "Szeroka tylna opona",
+        ],
+      },
+      {
+        name: "Yamaha R1",
+        price: 20000,
+        image: "yamaha_r1.png",
+        description: "Motocykl sportowy o wysokich osiągach, idealny na tor.",
+        features: ["Silnik 1000cc", "Kontrola trakcji", "Aktywne zawieszenie"],
+      },
+      {
+        name: "Kawasaki Ninja H2",
+        price: 32000,
+        image: "kawasaki_h2.png",
+        description:
+          "Supercharged motocykl, który przekracza granice prędkości.",
+        features: ["Doładowany silnik", "Rama trellis", "Ponad 300 KM"],
+      },
+      {
+        name: "Jeep Wrangler",
+        price: 45000,
+        image: "jeep_wrangler.png",
+        description:
+          "Legendarny pojazd terenowy, stworzony do jazdy w najtrudniejszych warunkach.",
+        features: ["Napęd 4x4", "Zdejmowany dach", "Blokady dyferencjałów"],
+      },
+      {
+        name: "Toyota Land Cruiser",
+        price: 90000,
+        image: "toyota_land_cruiser.png",
+        description:
+          "Niezawodna terenówka, używana na całym świecie do najtrudniejszych zadań.",
+        features: ["Silnik V8", "Wytrzymałe zawieszenie", "Bogate wyposażenie"],
+      },
+      {
+        name: "Mercedes-Benz G63 AMG",
+        price: 200000,
+        image: "mercedes_g63.png",
+        description:
+          "Luksusowy SUV o niesamowitych możliwościach terenowych i mocnym V8.",
+        features: ["Napęd 4x4", "750 Nm momentu obrotowego", "Tryb terenowy"],
+      },
+      {
+        name: "John Deere 8R",
+        price: 180000,
+        image: "john_deere_8r.png",
+        description:
+          "Nowoczesny traktor o dużej mocy, idealny do ciężkiej pracy w rolnictwie.",
+        features: [
+          "Silnik wysokoprężny",
+          "GPS Auto-Steer",
+          "Hydrauliczne zawieszenie",
+        ],
+      },
+      {
+        name: "Claas Lexion 8900",
+        price: 450000,
+        image: "claas_lexion.png",
+        description:
+          "Kombajn rolniczy o ogromnej wydajności i nowoczesnej technologii.",
+        features: [
+          "Automatyczne sterowanie",
+          "System czyszczenia ziarna",
+          "Wysoka wydajność",
+        ],
+      },
+      {
+        name: "Giant Trance E+",
+        price: 5500,
+        image: "giant_trance.png",
+        description: "Elektryczny rower górski do jazdy po trudnym terenie.",
+        features: [
+          "Silnik elektryczny",
+          "Amortyzacja Fox",
+          "Lekkie karbonowe ramy",
+        ],
+      },
+      {
+        name: "Specialized Tarmac SL7",
+        price: 12000,
+        image: "specialized_tarmac.png",
+        description:
+          "Profesjonalny rower szosowy, wykorzystywany w wyścigach kolarskich.",
+        features: [
+          "Rama karbonowa",
+          "Hydrauliczne hamulce tarczowe",
+          "Aerodynamiczna konstrukcja",
+        ],
+      },
+      {
+        name: "Segway Ninebot MAX",
+        price: 800,
+        image: "segway_ninebot.png",
+        description:
+          "Elektryczna hulajnoga o dużym zasięgu, idealna do miejskiej mobilności.",
+        features: [
+          "Zasięg 65 km",
+          "Składana konstrukcja",
+          "Amortyzacja przedniego koła",
+        ],
+      },
+      {
+        name: "Scania R500",
+        price: 120000,
+        image: "scania_r500.png",
+        description:
+          "Ciężarówka dalekobieżna o potężnym silniku i komfortowej kabinie.",
+        features: [
+          "Silnik 13L",
+          "Automatyczna skrzynia biegów",
+          "System oszczędzania paliwa",
+        ],
       },
     ];
 
@@ -106,10 +268,12 @@ class Vehicle {
 
   createJobPopupHTML(vehicle) {
     return `
-        <div class="header">
-          <img src="assets/images/auto.png" alt="${vehicle.name}" />
-          <div>
-            <div class="title">${vehicle.name}</div>
+        <div class="header vehicle-popup_header">
+          <img class="vehicle-popup_img" src="assets/images/auto.png" alt="${
+            vehicle.name
+          }" />
+          <div class='vehicle-popup_text'>
+            <div class="title ">${vehicle.name}</div>
             <div class="salary">Cena: ${vehicle.price} PLN</div>
           </div>
         </div>
@@ -117,8 +281,7 @@ class Vehicle {
         ${vehicle.description}
         </div>
         <div class="features skills">
-          <p><span>🚀</span>  Na zakrętach nie ma sobie równych</p>
-          <p><span>🚀</span>  Szerroki kapeć</p>
+        ${vehicle.features.map((skill) => `<p>🚀 ${skill}</p>`).join("")}
         </div>
         
           <div class="button_container">

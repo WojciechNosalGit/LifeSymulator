@@ -4,8 +4,14 @@ class Wallet {
     this.account = value;
   }
 
+  formatValueWithSpaces(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
+
   getAccountValue() {
-    return this.account > 0 ? `${this.account} zł` : `Brak środków`;
+    return this.account > 0
+      ? `${this.formatValueWithSpaces(this.account)} PLN`
+      : `Brak środków`;
   }
 
   checkIfEnoughMoney(money) {
