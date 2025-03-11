@@ -259,7 +259,7 @@ class Vehicle {
     });
   }
 
-  showBigPictureVehicle(index, isInGarage = false) {
+  showBigPictureVehicle(index, isInGarage = false, vehicleIndex) {
     const vehicle = isInGarage ? index : this.vehicles[index]; // if vehicle is in garage, index is passed as a parameter
     this.selectedVehicle = vehicle;
 
@@ -269,7 +269,8 @@ class Vehicle {
 
     this.vehiclePopupWindow.innerHTML = this.createVehiclePopupHTML(
       vehicle,
-      isInGarage
+      isInGarage,
+      vehicleIndex
     );
 
     document
@@ -279,7 +280,7 @@ class Vehicle {
       });
   }
 
-  createVehiclePopupHTML(vehicle, isInGarage) {
+  createVehiclePopupHTML(vehicle, isInGarage, vehicleIndex) {
     return `
         <div class="header vehicle-popup_header">
           <img class="vehicle-popup_img" src="assets/images/auto.png" alt="${
@@ -300,10 +301,10 @@ class Vehicle {
         </div>
         
           <div class="button_container">
-          <button class="vehicle-popup_back back-button button">Cofnij</button>
+          <button class="vehicle-popup_back back-button button" >Cofnij</button>
           ${
             isInGarage
-              ? `<button class="vehicle-popup_sell button">Sprzedaj</button>`
+              ? `<button class="vehicle-popup_sell button" data-index=${vehicleIndex}>Sprzedaj</button>`
               : `    
               <button class="vehicle-popup_select select-button button">Wybierz</button>`
           }         

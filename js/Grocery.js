@@ -2,18 +2,19 @@ class Grocery {
   constructor() {
     this.shopListContainer = document.getElementById("shop-list_container");
     this.items = [
-      { name: "Woda", icon: "💧", fuel: 200, cost: 30 },
+      { name: "Woda", icon: "💧", fuel: 200, cost: 30, type: "Drink" },
       { name: "Chleb", icon: "🍞", fuel: 500, cost: 90 },
       { name: "Jabłko", icon: "🍏", fuel: 150, cost: 20 },
       { name: "Banan", icon: "🍌", fuel: 250, cost: 35 },
       { name: "Ser", icon: "🧀", fuel: 600, cost: 120 },
       { name: "Mięso", icon: "🥩", fuel: 900, cost: 180 },
       { name: "Ryba", icon: "🐟", fuel: 750, cost: 150 },
+      { name: "Sok", icon: "🥤", fuel: 300, cost: 50, type: "Drink" },
       { name: "Ziemniaki", icon: "🥔", fuel: 400, cost: 60 },
       { name: "Marchewka", icon: "🥕", fuel: 180, cost: 25 },
       { name: "Pomidor", icon: "🍅", fuel: 200, cost: 30 },
       { name: "Jajka", icon: "🥚", fuel: 500, cost: 85 },
-      { name: "Mleko", icon: "🥛", fuel: 300, cost: 50 },
+      { name: "Mleko", icon: "🥛", fuel: 300, cost: 50, type: "Drink" },
       { name: "Kukurydza", icon: "🌽", fuel: 350, cost: 55 },
       { name: "Miód", icon: "🍯", fuel: 800, cost: 160 },
       { name: "Czekolada", icon: "🍫", fuel: 700, cost: 140 },
@@ -31,7 +32,7 @@ class Grocery {
       .addEventListener("click", () => this.closeShopWindow());
   }
 
-  createItemElement({ icon, fuel, cost }, index) {
+  createItemElement({ icon, fuel, cost, type }, index) {
     const li = document.createElement("li");
     li.classList.add("shop-item");
     li.dataset.index = index;
@@ -46,7 +47,7 @@ class Grocery {
 
     const pFuel = document.createElement("p");
     pFuel.classList.add("shop-item-fuel");
-    pFuel.textContent = `${fuel} kcal`;
+    pFuel.textContent = type === "Drink" ? `${fuel} ml` : `${fuel} kcal`;
 
     li.appendChild(pIcon);
     li.appendChild(pPrice);

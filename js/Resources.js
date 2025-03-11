@@ -40,8 +40,8 @@ class Resources {
     this.render();
   }
 
-  eat(name, amount) {
-    if (name === "Woda") {
+  eat(amount, type) {
+    if (type === "Drink") {
       this.startWater = Math.min(this.waterContainer, this.startWater + amount);
     } else {
       this.startFood = Math.min(this.foodContainer, this.startFood + amount);

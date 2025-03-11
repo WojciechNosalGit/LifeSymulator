@@ -99,14 +99,15 @@ class Game {
       if (vehicle) {
         const index = vehicle.dataset.index;
         const clickedVehicle = this.equipment.vehicles[index];
-        this.vehicle.showBigPictureVehicle(clickedVehicle, true);
+        this.vehicle.showBigPictureVehicle(clickedVehicle, true, index);
       }
     });
 
     //sell vehicle
     document.addEventListener("click", (event) => {
       if (event.target.classList.contains("vehicle-popup_sell")) {
-        console.log(event.target);
+        const index = event.target.dataset.index;
+        this.sellVehicle(index);
       }
     });
   }
@@ -170,7 +171,7 @@ class Game {
     const item = this.equipment.getItem(index);
 
     this.equipment.useItem(index);
-    this.resources.eat(item.name, item.fuel);
+    this.resources.eat(item.fuel, item.type);
   }
 
   //vehicle
@@ -182,6 +183,14 @@ class Game {
       this.vehicle.closeVehiclesWindow();
       this.vehicle.closeBigPictureVehicle();
     }
+  }
+
+  sellVehicle(index) {
+    this.sound.play(this.sound.click);
+    const vehicle = this.equipment.vehicles[index];
+    this.wallet.addMoneyToAccount(vehicle.price * 0.7);
+    this.equipment.sellVehicle(index);
+    this.vehicle.closeBigPictureVehicle();
   }
 
   render() {
