@@ -191,11 +191,19 @@ class Vehicle {
     this.vehicleList = document.querySelector(".vehicle-list_container");
     this.vehiclePopupWindow = document.querySelector(".vehicle-popup");
 
+    this.initEvents();
+
+    this.addVehicleElementsToList();
+  }
+
+  initEvents() {
     document
       .querySelector(".close-vehicle-list_button")
       .addEventListener("click", () => this.closeVehiclesWindow());
+  }
 
-    this.addVehicleElementsToList();
+  formatValueWithSpaces(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
 
   createVehicleElement({ name, price, image }) {
@@ -214,7 +222,9 @@ class Vehicle {
 
     const paragraphCost = document.createElement("p");
     paragraphCost.classList.add("vehicle-cost");
-    paragraphCost.textContent = `Cena: ${price} PLN`;
+    paragraphCost.textContent = `Cena: ${this.formatValueWithSpaces(
+      price
+    )} PLN`;
 
     div.appendChild(h2);
     div.appendChild(paragraphCost);
@@ -249,15 +259,18 @@ class Vehicle {
     });
   }
 
-  showBigPictureVehicle(index) {
-    const vehicle = this.vehicles[index];
+  showBigPictureVehicle(index, isInGarage = false) {
+    const vehicle = isInGarage ? index : this.vehicles[index]; // if vehicle is in garage, index is passed as a parameter
     this.selectedVehicle = vehicle;
 
     this.vehiclePopupWindow.innerHTML = "";
 
     this.vehiclePopupWindow.classList.remove("display-none");
 
-    this.vehiclePopupWindow.innerHTML = this.createJobPopupHTML(vehicle);
+    this.vehiclePopupWindow.innerHTML = this.createVehiclePopupHTML(
+      vehicle,
+      isInGarage
+    );
 
     document
       .querySelector(".vehicle-popup_back")
@@ -266,7 +279,7 @@ class Vehicle {
       });
   }
 
-  createJobPopupHTML(vehicle) {
+  createVehiclePopupHTML(vehicle, isInGarage) {
     return `
         <div class="header vehicle-popup_header">
           <img class="vehicle-popup_img" src="assets/images/auto.png" alt="${
@@ -274,7 +287,9 @@ class Vehicle {
           }" />
           <div class='vehicle-popup_text'>
             <div class="title ">${vehicle.name}</div>
-            <div class="salary">Cena: ${vehicle.price} PLN</div>
+            <div class="price">Cena: ${this.formatValueWithSpaces(
+              vehicle.price
+            )} PLN</div>
           </div>
         </div>
         <div class="description">
@@ -285,8 +300,13 @@ class Vehicle {
         </div>
         
           <div class="button_container">
-              <button class="vehicle-popup_back back-button button">Cofnij</button>
-              <button class="vehicle-popup_select select-button button">Wybierz</button>
+          <button class="vehicle-popup_back back-button button">Cofnij</button>
+          ${
+            isInGarage
+              ? `<button class="vehicle-popup_sell button">Sprzedaj</button>`
+              : `    
+              <button class="vehicle-popup_select select-button button">Wybierz</button>`
+          }         
             </div>
       `;
   }

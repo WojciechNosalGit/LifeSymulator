@@ -3,7 +3,20 @@ class Equipment {
     this.items = [
       { name: "Jabłko", icon: "🍏", fuel: 150, cost: 20, amount: 1 },
     ];
-    this.vehicles = [];
+    this.vehicles = [
+      {
+        name: "Segway Ninebot MAX",
+        price: 800,
+        image: "segway_ninebot.png",
+        description:
+          "Elektryczna hulajnoga o dużym zasięgu, idealna do miejskiej mobilności.",
+        features: [
+          "Zasięg 65 km",
+          "Składana konstrukcja",
+          "Amortyzacja przedniego koła",
+        ],
+      },
+    ];
   }
 
   getItem(index) {
@@ -49,6 +62,11 @@ class Equipment {
     return this.items[index];
   }
 
+  sellVehicle(index) {
+    this.vehicles.splice(index, 1);
+    this.renderEquipment();
+  }
+
   renderEquipment() {
     const equipmentList = document.querySelector(".equipment-grocery-items");
     const vehicleList = document.querySelector(".equipment-vehicle-items");
@@ -91,12 +109,7 @@ class Equipment {
         image.src = `../assets/images/auto.png`;
         image.alt = this.vehicles[i].name;
 
-        // const divAmount = document.createElement("div");
-        // divAmount.classList.add("item-amount");
-        // divAmount.textContent = this.vehicles[i].amount;
-
         div.appendChild(image);
-        // div.appendChild(divAmount);
       }
 
       vehicleList.appendChild(div);

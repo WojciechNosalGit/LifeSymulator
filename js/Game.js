@@ -93,6 +93,22 @@ class Game {
         this.buyVehicle(this.currentVehicle);
       }
     });
+
+    document.addEventListener("click", (event) => {
+      const vehicle = event.target.closest(".vehicle-item_active");
+      if (vehicle) {
+        const index = vehicle.dataset.index;
+        const clickedVehicle = this.equipment.vehicles[index];
+        this.vehicle.showBigPictureVehicle(clickedVehicle, true);
+      }
+    });
+
+    //sell vehicle
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("vehicle-popup_sell")) {
+        console.log(event.target);
+      }
+    });
   }
 
   startJob(job) {

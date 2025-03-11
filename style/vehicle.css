@@ -100,6 +100,16 @@ img.vehicle-popup_img {
 }
 
 .vehicle-popup_text {
-  align-self: center;
+  border-radius: 4px;
   margin-top: 16px;
+  background-color: #fff;
+  padding: 8px;
+  padding-bottom: 0;
+
+  & .price {
+    color: var(--orange);
+    font-size: 2.4em;
+    margin-bottom: 8px;
+    text-shadow: -1px 0px 0px black;
+  }
 }
