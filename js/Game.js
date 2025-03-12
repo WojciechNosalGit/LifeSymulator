@@ -15,7 +15,7 @@ class Game {
 
     this.salary = new Salary();
     this.profession = new Profession();
-    this.wallet = new Wallet(20000);
+    this.wallet = new Wallet(200);
     this.grocery = new Grocery();
     this.vehicle = new Vehicle();
     this.equipment = new Equipment();
