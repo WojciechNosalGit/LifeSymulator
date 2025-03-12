@@ -25,8 +25,11 @@ class Game {
     this.currentJob = null;
     this.currentVehicle = null;
     this.currentSalary = 0;
-    this.jobTime = 1000 * 60; //milisec*sec*min
+    this.jobTime = 1000 * 60 * 10; //milisec*sec*min
+
     this.jobTimerIndex = null;
+    this.progressBarIndex = null;
+
     this.isAtWork = false;
 
     this.resourcesIntervalIndex = null;
@@ -64,6 +67,7 @@ class Game {
 
     this.quitJobButton.addEventListener("click", () => {
       clearInterval(this.jobTimerIndex);
+      this.stopProgress();
       this.render();
     });
 
@@ -127,6 +131,8 @@ class Game {
     this.charakterNameElement.textContent = `Pracujesz jako ${this.currentJob.name}`;
     this.jobButtonsHandler();
 
+    this.startProgress(this.jobTime);
+
     this.jobTimerIndex = setTimeout(() => {
       this.stopJob();
     }, this.jobTime);
@@ -135,6 +141,8 @@ class Game {
   stopJob() {
     this.isAtWork = false;
     this.wallet.addMoneyToAccount(this.currentSalary);
+
+    this.stopProgress();
 
     this.render();
   }
@@ -147,6 +155,27 @@ class Game {
       this.selectJobButton.classList.remove("display-none");
       this.quitJobButton.classList.add("display-none");
     }
+  }
+
+  startProgress(workTime) {
+    let progressBar = document.getElementById("progressBar");
+
+    let width = 0;
+    let step = (100 / workTime) * 1000;
+
+    function update() {
+      if (width < 100) {
+        width += step;
+        progressBar.style.width = width + "%";
+      }
+    }
+    this.progressBarIndex = setInterval(update, 1000);
+  }
+
+  stopProgress() {
+    let progressBar = document.getElementById("progressBar");
+    clearInterval(this.progressBarIndex);
+    progressBar.style.width = "0%";
   }
 
   updateResources(waterConsumption, foodConsumption) {
