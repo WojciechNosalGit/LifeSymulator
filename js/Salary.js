@@ -8,6 +8,10 @@ class Salary {
     this.currentSalary = 0;
   }
 
+  formatValueWithSpaces(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
+
   setJob(job) {
     this.currentJob = job;
     this.calcSalary();
@@ -35,7 +39,9 @@ class Salary {
   }
 
   displaySalary() {
-    this.curentSalaryElement.textContent = `Zarobisz ${this.currentSalary} zł`;
+    this.curentSalaryElement.textContent = `Zarobisz ${this.formatValueWithSpaces(
+      this.currentSalary
+    )} zł`;
   }
 
   getSalary() {
