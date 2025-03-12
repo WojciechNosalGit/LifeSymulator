@@ -42,10 +42,18 @@ class Resources {
 
   eat(amount, type) {
     if (type === "Drink") {
+      if (this.startWater === this.waterContainer) {
+        return alert("Więcej nie wypijesz! Będziesz sikał co chwilę!");
+      }
       this.startWater = Math.min(this.waterContainer, this.startWater + amount);
     } else {
+      if (this.startFood === this.foodContainer) {
+        return alert("Jesteś już zapchany! Nie bądź grubą świnia!");
+      }
       this.startFood = Math.min(this.foodContainer, this.startFood + amount);
     }
+
+    console.log(this.startWater, this.startFood);
 
     this.render();
   }

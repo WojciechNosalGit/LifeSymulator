@@ -106,7 +106,7 @@ class Equipment {
 
         const image = document.createElement("img");
         image.classList.add("vehicle-item-img");
-        image.src = `../assets/images/auto.png`;
+        image.src = `assets/images/auto.png`;
         image.alt = this.vehicles[i].name;
 
         div.appendChild(image);
