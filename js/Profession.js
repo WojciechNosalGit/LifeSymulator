@@ -11,6 +11,10 @@ class Profession {
     this.addJobElementsToList();
   }
 
+  formatValueWithSpaces(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
+
   createJobElement({ name, salaryRange, image }) {
     const li = document.createElement("li");
     li.classList.add("profession");
@@ -27,7 +31,12 @@ class Profession {
 
     const paragraphSalary = document.createElement("p");
     paragraphSalary.classList.add("salary");
-    paragraphSalary.textContent = `Pensja: ${salaryRange[0]} - ${salaryRange[1]} PLN`;
+
+    const salaryText = `Pensja: ${this.formatValueWithSpaces(
+      salaryRange[0]
+    )} - ${this.formatValueWithSpaces(salaryRange[1])} PLN`;
+
+    paragraphSalary.textContent = salaryText;
 
     div.appendChild(h2);
     div.appendChild(paragraphSalary);
@@ -79,14 +88,16 @@ class Profession {
   }
 
   createJobPopupHTML(job) {
+    const salaryText = `Pensja: ${this.formatValueWithSpaces(
+      job.salaryRange[0]
+    )} - ${this.formatValueWithSpaces(job.salaryRange[1])} PLN`;
+
     return `
         <div class="header">
           <img src="assets/images/${job.image}" alt="${job.name}" />
           <div>
             <div class="title">${job.name}</div>
-            <div class="salary">Pensja: ${job.salaryRange[0]} - ${
-      job.salaryRange[1]
-    } PLN</div>
+            <div class="salary">${salaryText} PLN</div>
           </div>
         </div>
         <div class="description">
