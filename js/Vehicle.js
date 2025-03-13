@@ -4,7 +4,7 @@ class Vehicle {
       {
         name: "Ford Mustang",
         price: 50000,
-        image: "mustang.png",
+        image: "mustang.jpeg",
         description:
           "Legendarny amerykański muscle car o agresywnym wyglądzie i potężnym silniku.",
         features: ["5.0L V8", "Klasyczny design", "Sportowe zawieszenie"],
@@ -12,7 +12,7 @@ class Vehicle {
       {
         name: "Tesla Model S",
         price: 80000,
-        image: "tesla_model_s.png",
+        image: "tesla_model_s.jpeg",
         description:
           "Nowoczesny elektryczny sedan, który łączy luksus z niesamowitymi osiągami.",
         features: ["Autopilot", "Zasięg 600 km", "0-100 km/h w 2.1s"],
@@ -20,7 +20,7 @@ class Vehicle {
       {
         name: "Volkswagen Golf GTI",
         price: 35000,
-        image: "golf_gti.png",
+        image: "golf_gti.jpeg",
         description:
           "Kompaktowy hot hatch, który oferuje świetne osiągi i codzienną praktyczność.",
         features: ["Turbo 2.0L", "Skrzynia DSG", "Sportowe fotele"],
@@ -28,7 +28,7 @@ class Vehicle {
       {
         name: "BMW M3",
         price: 70000,
-        image: "bmw_m3.png",
+        image: "bmw_m3.jpeg",
         description:
           "Sportowy sedan z niemiecką precyzją i mocnym silnikiem R6 turbo.",
         features: ["Drift Mode", "Moc 510 KM", "Carbonowe dodatki"],
@@ -161,18 +161,6 @@ class Vehicle {
         ],
       },
       {
-        name: "Segway Ninebot MAX",
-        price: 800,
-        image: "segway_ninebot.png",
-        description:
-          "Elektryczna hulajnoga o dużym zasięgu, idealna do miejskiej mobilności.",
-        features: [
-          "Zasięg 65 km",
-          "Składana konstrukcja",
-          "Amortyzacja przedniego koła",
-        ],
-      },
-      {
         name: "Scania R500",
         price: 120000,
         image: "scania_r500.png",
@@ -211,7 +199,7 @@ class Vehicle {
     li.classList.add("vehicle");
 
     const img = document.createElement("img");
-    img.src = `assets/images/auto.png`;
+    img.src = `assets/images/${image}`;
     img.alt = image;
 
     const div = document.createElement("div");
@@ -283,9 +271,9 @@ class Vehicle {
   createVehiclePopupHTML(vehicle, isInGarage, vehicleIndex) {
     return `
         <div class="header vehicle-popup_header">
-          <img class="vehicle-popup_img" src="assets/images/auto.png" alt="${
-            vehicle.name
-          }" />
+          <img class="vehicle-popup_img" src="assets/images/${
+            vehicle.image
+          }" alt="${vehicle.name}" />
           <div class='vehicle-popup_text'>
             <div class="title ">${vehicle.name}</div>
             <div class="price">Cena: ${this.formatValueWithSpaces(

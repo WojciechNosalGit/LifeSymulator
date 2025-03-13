@@ -15,7 +15,7 @@ class Equipment {
       {
         name: "Segway Ninebot MAX",
         price: 800,
-        image: "segway_ninebot.png",
+        image: "segway_ninebot.jpeg",
         description:
           "Elektryczna hulajnoga o dużym zasięgu, idealna do miejskiej mobilności.",
         features: [
@@ -114,7 +114,7 @@ class Equipment {
 
         const image = document.createElement("img");
         image.classList.add("vehicle-item-img");
-        image.src = `assets/images/auto.png`;
+        image.src = `assets/images/${this.vehicles[i].image}`;
         image.alt = this.vehicles[i].name;
 
         div.appendChild(image);
