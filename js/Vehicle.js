@@ -174,6 +174,8 @@ class Vehicle {
       },
     ];
 
+    this.sound = new Sound();
+
     this.selectedVehicle = null;
 
     this.vehicleList = document.querySelector(".vehicle-list_container");
@@ -248,6 +250,8 @@ class Vehicle {
   }
 
   showBigPictureVehicle(index, isInGarage = false, vehicleIndex) {
+    this.sound.play(this.sound.click);
+
     const vehicle = isInGarage ? index : this.vehicles[index]; // if vehicle is in garage, index is passed as a parameter
     this.selectedVehicle = vehicle;
 

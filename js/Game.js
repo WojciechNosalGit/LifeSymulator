@@ -114,6 +114,19 @@ class Game {
         this.sellVehicle(index);
       }
     });
+
+    //click sound for buttons
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("close-x")) {
+        this.sound.play(this.sound.click);
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("button")) {
+        this.sound.play(this.sound.click);
+      }
+    });
   }
 
   startJob(job) {
@@ -187,8 +200,6 @@ class Game {
 
   // //grocery
   buyGroceryFromShop(item) {
-    this.sound.play(this.sound.click);
-
     if (this.wallet.checkIfEnoughMoney(item.cost)) {
       this.wallet.substractMoneyFromAccont(item.cost);
       this.equipment.addItem(item);
@@ -196,7 +207,6 @@ class Game {
   }
 
   useGroceryItem(index) {
-    this.sound.play(this.sound.click);
     const item = this.equipment.getItem(index);
 
     this.equipment.useItem(index);

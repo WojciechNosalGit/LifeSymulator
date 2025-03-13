@@ -2,6 +2,8 @@ class Wallet {
   constructor(value = 0) {
     this.accountElement = document.querySelector(".account span");
     this.account = value;
+
+    this.sound = new Sound();
   }
 
   formatValueWithSpaces(value) {
@@ -16,6 +18,7 @@ class Wallet {
 
   checkIfEnoughMoney(money) {
     if (this.account < money) {
+      this.sound.play(this.sound.alert);
       alert(
         "Możesz wydać tylko to co masz! Spróbuj wybrać coś innego, albo zarób trochę pieniędzy!"
       );
@@ -25,12 +28,16 @@ class Wallet {
   }
 
   addMoneyToAccount(money) {
+    this.sound.play(this.sound.addMoney);
+
     this.account += money;
 
     this.render();
   }
 
   substractMoneyFromAccont(money) {
+    this.sound.play(this.sound.spendMoney);
+
     this.account -= money;
 
     this.render();

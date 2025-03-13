@@ -3,6 +3,8 @@ class Resources {
     this.waterLevelElement = document.querySelector(".water-level span");
     this.foodLevelElement = document.querySelector(".food-level span");
 
+    this.sound = new Sound();
+
     this.waterContainer = 6000;
     this.foodContainer = 5000;
 
@@ -34,6 +36,7 @@ class Resources {
     this.startFood = Math.max(0, this.startFood - this.consumptionRate.food);
 
     if (this.startWater === 0 || this.startFood === 0) {
+      this.sound.play(this.sound.alert);
       return alert("Jesteś wyczerpany! KONIEC GRY!");
     }
 
@@ -43,13 +46,17 @@ class Resources {
   eat(amount, type) {
     if (type === "Drink") {
       if (this.startWater === this.waterContainer) {
+        this.sound.play(this.sound.alert);
         return alert("Więcej nie wypijesz! Będziesz sikał co chwilę!");
       }
+      this.sound.play(this.sound.drink);
       this.startWater = Math.min(this.waterContainer, this.startWater + amount);
     } else {
       if (this.startFood === this.foodContainer) {
+        this.sound.play(this.sound.alert);
         return alert("Jesteś już zapchany! Nie bądź grubą świnia!");
       }
+      this.sound.play(this.sound.eat);
       this.startFood = Math.min(this.foodContainer, this.startFood + amount);
     }
 

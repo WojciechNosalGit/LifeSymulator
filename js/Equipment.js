@@ -25,6 +25,8 @@ class Equipment {
         ],
       },
     ];
+
+    this.sound = new Sound();
   }
 
   getItem(index) {
@@ -38,11 +40,13 @@ class Equipment {
     //if exists increase amount
     if (existingItem) {
       //only one vehicle
-      if (type !== "grocery")
+      if (type !== "grocery") {
+        this.sound.play(this.sound.alert);
         return alert("Nie możesz mieć więcej niż jeden pojazd!");
+      }
       //max 8 items
       if (existingItem.amount >= 8) {
-        //alert sound
+        this.sound.play(this.sound.alert);
         return alert(
           "Nie bądź zachłanny! Masz już maksymalną ilość tego przedmiotu!"
         );
