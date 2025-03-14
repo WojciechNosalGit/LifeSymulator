@@ -36,7 +36,7 @@ class Vehicle {
       {
         name: "Audi R8",
         price: 150000,
-        image: "audi_r8.png",
+        image: "audi_r8.jpeg",
         description:
           "Supersamochód z centralnie umieszczonym silnikiem V10 i napędem quattro.",
         features: ["V10 5.2L", "Napęd AWD", "Agresywny wygląd"],
@@ -44,7 +44,7 @@ class Vehicle {
       {
         name: "Lamborghini Aventador",
         price: 400000,
-        image: "lamborghini_aventador.png",
+        image: "lamborghini_aventador.jpeg",
         description:
           "Ikona supersamochodów z potężnym silnikiem V12 i wyjątkowym designem.",
         features: ["6.5L V12", "Drzwi otwierane do góry", "Napęd AWD"],
@@ -52,21 +52,21 @@ class Vehicle {
       {
         name: "Porsche 911 Turbo S",
         price: 200000,
-        image: "porsche_911.png",
+        image: "porsche_911.jpeg",
         description: "Perfekcyjna kombinacja luksusu, osiągów i technologii.",
-        features: ["Silnik z tyłu", "Launch Control", "Aktywne aerodynamika"],
+        features: ["Silnik z tyłu", "Launch Control", "Aktywna aerodynamika"],
       },
       {
         name: "Dodge Charger Hellcat",
         price: 85000,
-        image: "dodge_charger.png",
+        image: "dodge_charger.jpeg",
         description: "Muscle car z piekielnym V8 o mocy ponad 700 KM.",
         features: ["Supercharged V8", "Tryb driftu", "Głośny wydech"],
       },
       {
         name: "Harley-Davidson Fat Boy",
         price: 25000,
-        image: "harley_fatboy.png",
+        image: "harley_fatboy.jpeg",
         description: "Kultowy motocykl cruiser z niepowtarzalnym brzmieniem.",
         features: [
           "Silnik Milwaukee-Eight",
@@ -77,14 +77,14 @@ class Vehicle {
       {
         name: "Yamaha R1",
         price: 20000,
-        image: "yamaha_r1.png",
+        image: "yamaha_r1.jpeg",
         description: "Motocykl sportowy o wysokich osiągach, idealny na tor.",
         features: ["Silnik 1000cc", "Kontrola trakcji", "Aktywne zawieszenie"],
       },
       {
         name: "Kawasaki Ninja H2",
         price: 32000,
-        image: "kawasaki_h2.png",
+        image: "kawasaki_h2.jpeg",
         description:
           "Supercharged motocykl, który przekracza granice prędkości.",
         features: ["Doładowany silnik", "Rama trellis", "Ponad 300 KM"],
@@ -92,23 +92,15 @@ class Vehicle {
       {
         name: "Jeep Wrangler",
         price: 45000,
-        image: "jeep_wrangler.png",
+        image: "jeep_wrangler.jpeg",
         description:
           "Legendarny pojazd terenowy, stworzony do jazdy w najtrudniejszych warunkach.",
         features: ["Napęd 4x4", "Zdejmowany dach", "Blokady dyferencjałów"],
       },
       {
-        name: "Toyota Land Cruiser",
-        price: 90000,
-        image: "toyota_land_cruiser.png",
-        description:
-          "Niezawodna terenówka, używana na całym świecie do najtrudniejszych zadań.",
-        features: ["Silnik V8", "Wytrzymałe zawieszenie", "Bogate wyposażenie"],
-      },
-      {
         name: "Mercedes-Benz G63 AMG",
         price: 200000,
-        image: "mercedes_g63.png",
+        image: "mercedes_g63.jpeg",
         description:
           "Luksusowy SUV o niesamowitych możliwościach terenowych i mocnym V8.",
         features: ["Napęd 4x4", "750 Nm momentu obrotowego", "Tryb terenowy"],
@@ -136,6 +128,14 @@ class Vehicle {
           "System czyszczenia ziarna",
           "Wysoka wydajność",
         ],
+      },
+      {
+        name: "Toyota Land Cruiser",
+        price: 90000,
+        image: "toyota_land_cruiser.jpeg",
+        description:
+          "Niezawodna terenówka, używana na całym świecie do najtrudniejszych zadań.",
+        features: ["Silnik V8", "Wytrzymałe zawieszenie", "Bogate wyposażenie"],
       },
       {
         name: "Giant Trance E+",

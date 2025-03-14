@@ -66,9 +66,7 @@ class Game {
     });
 
     this.quitJobButton.addEventListener("click", () => {
-      clearInterval(this.jobTimerIndex);
-      this.stopProgress();
-      this.render();
+      this.quitJobHendler();
     });
 
     // shop - grocery
@@ -130,6 +128,8 @@ class Game {
   }
 
   startJob(job) {
+    this.sound.play(this.sound.startWork);
+
     this.isAtWork = true;
 
     clearInterval(this.resourcesIntervalIndex);
@@ -147,11 +147,20 @@ class Game {
     this.startProgress(this.jobTime);
 
     this.jobTimerIndex = setTimeout(() => {
-      this.stopJob();
+      this.doneJob();
     }, this.jobTime);
   }
 
-  stopJob() {
+  quitJobHendler() {
+    this.sound.play(this.sound.stopWork);
+    clearInterval(this.jobTimerIndex);
+    this.stopProgress();
+    this.render();
+  }
+
+  doneJob() {
+    this.sound.play(this.sound.doneWork);
+
     this.isAtWork = false;
     this.wallet.addMoneyToAccount(this.currentSalary);
 

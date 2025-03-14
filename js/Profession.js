@@ -6,6 +6,8 @@ class Profession {
     this.professionList = document.getElementById("profession-list");
     this.jobPopupWindow = document.querySelector(".job-popup");
 
+    this.sound = new Sound();
+
     this.selectedJob = null;
 
     this.addJobElementsToList();
@@ -73,6 +75,8 @@ class Profession {
   }
 
   showBigPictureJob(index) {
+    this.sound.play(this.sound.click);
+
     const job = professions[index]; //jobList.js
     this.selectedJob = job;
 

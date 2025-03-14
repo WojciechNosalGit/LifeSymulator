@@ -6,6 +6,9 @@ class Sound {
     this.spendMoney = document.getElementById("spend-money");
     this.addMoney = document.getElementById("add-money");
     this.alert = document.getElementById("alert");
+    this.startWork = document.getElementById("start-work");
+    this.stopWork = document.getElementById("stop-work");
+    this.doneWork = document.getElementById("done-work");
   }
   play(sound) {
     sound.currentTime = 0;
