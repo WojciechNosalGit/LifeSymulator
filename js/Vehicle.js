@@ -326,6 +326,8 @@ class Vehicle {
   }
 
   showFullImg(imageSrc) {
+    this.sound.play(this.sound.click);
+
     const div = document.createElement("div");
     div.classList.add("vehicle-full-img_container");
 

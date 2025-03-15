@@ -1,5 +1,5 @@
 class Resources {
-  constructor() {
+  constructor(startLevel) {
     this.waterLevelElement = document.querySelector(".water-level span");
     this.foodLevelElement = document.querySelector(".food-level span");
 
@@ -11,7 +11,7 @@ class Resources {
     this.waterRequirement = 2000; // demand for water
     this.foodRequirement = 2000; // demand for food
 
-    this.startLevel = 50;
+    this.startLevel = startLevel;
     this.startWater = this.waterContainer * (this.startLevel / 100);
     this.startFood = this.foodContainer * (this.startLevel / 100);
 
@@ -43,19 +43,23 @@ class Resources {
     this.render();
   }
 
-  eat(amount, type) {
-    if (type === "Drink") {
-      if (this.startWater === this.waterContainer) {
-        this.sound.play(this.sound.alert);
-        return alert("Więcej nie wypijesz! Będziesz sikał co chwilę!");
-      }
+  isFull(toDrink) {
+    if (toDrink) {
+      if (this.startWater === this.waterContainer) return true;
+    } else {
+      if (this.startFood === this.foodContainer) return true;
+    }
+    return false;
+  }
+
+  eat(amount, toDrink) {
+    if (toDrink) {
+      console.log(this.waterContainer, this.startWater);
       this.sound.play(this.sound.drink);
       this.startWater = Math.min(this.waterContainer, this.startWater + amount);
     } else {
-      if (this.startFood === this.foodContainer) {
-        this.sound.play(this.sound.alert);
-        return alert("Jesteś już zapchany! Nie bądź grubą świnia!");
-      }
+      console.log(this.foodContainer, this.startFood);
+
       this.sound.play(this.sound.eat);
       this.startFood = Math.min(this.foodContainer, this.startFood + amount);
     }

@@ -24,6 +24,10 @@ h1.main-title {
   margin: 16px auto;
 }
 
+.game-button-container {
+  justify-content: space-around;
+}
+
 .pick-job_button {
   background-color: var(--secound-color);
 }

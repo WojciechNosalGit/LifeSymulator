@@ -2,19 +2,19 @@ class Grocery {
   constructor() {
     this.shopListContainer = document.getElementById("shop-list_container");
     this.items = [
-      { name: "Woda", icon: "💧", fuel: 200, cost: 30, type: "Drink" },
+      { name: "Woda", icon: "💧", fuel: 200, cost: 30, toDrink: true },
       { name: "Chleb", icon: "🍞", fuel: 500, cost: 90 },
       { name: "Jabłko", icon: "🍏", fuel: 150, cost: 20 },
       { name: "Banan", icon: "🍌", fuel: 250, cost: 35 },
       { name: "Ser", icon: "🧀", fuel: 600, cost: 120 },
       { name: "Mięso", icon: "🥩", fuel: 900, cost: 180 },
       { name: "Ryba", icon: "🐟", fuel: 750, cost: 150 },
-      { name: "Sok", icon: "🥤", fuel: 300, cost: 50, type: "Drink" },
+      { name: "Sok", icon: "🥤", fuel: 300, cost: 50, toDrink: true },
       { name: "Ziemniaki", icon: "🥔", fuel: 400, cost: 60 },
       { name: "Marchewka", icon: "🥕", fuel: 180, cost: 25 },
       { name: "Pomidor", icon: "🍅", fuel: 200, cost: 30 },
       { name: "Jajka", icon: "🥚", fuel: 500, cost: 85 },
-      { name: "Mleko", icon: "🥛", fuel: 300, cost: 50, type: "Drink" },
+      { name: "Mleko", icon: "🥛", fuel: 300, cost: 50, toDrink: true },
       { name: "Kukurydza", icon: "🌽", fuel: 350, cost: 55 },
       { name: "Miód", icon: "🍯", fuel: 800, cost: 160 },
       { name: "Czekolada", icon: "🍫", fuel: 700, cost: 140 },

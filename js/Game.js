@@ -19,7 +19,7 @@ class Game {
     this.grocery = new Grocery();
     this.vehicle = new Vehicle();
     this.equipment = new Equipment();
-    this.resources = new Resources();
+    this.resources = new Resources(95);
     this.sound = new Sound();
 
     this.currentJob = null;
@@ -218,8 +218,12 @@ class Game {
   useGroceryItem(index) {
     const item = this.equipment.getItem(index);
 
-    this.equipment.useItem(index);
-    this.resources.eat(item.fuel, item.type);
+    if (this.resources.isFull(item.toDrink)) {
+      return alert("już dość");
+    } else {
+      this.equipment.useItem(index);
+      this.resources.eat(item.fuel, item.toDrink);
+    }
   }
 
   //vehicle
