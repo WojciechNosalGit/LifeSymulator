@@ -69,6 +69,7 @@
   bottom: 16px;
   right: 0;
   padding: 16px;
+  padding-bottom: 0;
   width: 100%;
 }
 

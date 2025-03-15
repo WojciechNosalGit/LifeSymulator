@@ -94,8 +94,8 @@
 }
 
 img.vehicle-popup_img {
-  width: 100%;
-  height: 280px;
+  width: 320px;
+  height: 320px;
   margin-right: 0;
   cursor: pointer;
   transition: all 100ms ease-in-out;

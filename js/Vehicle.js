@@ -108,7 +108,7 @@ class Vehicle {
       {
         name: "John Deere 8R",
         price: 180000,
-        image: "john_deere_8r.png",
+        image: "john_deere_8r.jpeg",
         description:
           "Nowoczesny traktor o dużej mocy, idealny do ciężkiej pracy w rolnictwie.",
         features: [
@@ -120,7 +120,7 @@ class Vehicle {
       {
         name: "Claas Lexion 8900",
         price: 450000,
-        image: "claas_lexion.png",
+        image: "claas_lexion.jpeg",
         description:
           "Kombajn rolniczy o ogromnej wydajności i nowoczesnej technologii.",
         features: [
@@ -140,7 +140,7 @@ class Vehicle {
       {
         name: "Giant Trance E+",
         price: 5500,
-        image: "giant_trance.png",
+        image: "giant_trance.jpeg",
         description: "Elektryczny rower górski do jazdy po trudnym terenie.",
         features: [
           "Silnik elektryczny",
@@ -151,7 +151,7 @@ class Vehicle {
       {
         name: "Specialized Tarmac SL7",
         price: 12000,
-        image: "specialized_tarmac.png",
+        image: "specialized_tarmac.jpeg",
         description:
           "Profesjonalny rower szosowy, wykorzystywany w wyścigach kolarskich.",
         features: [
@@ -163,7 +163,7 @@ class Vehicle {
       {
         name: "Scania R500",
         price: 120000,
-        image: "scania_r500.png",
+        image: "scania_r500.jpeg",
         description:
           "Ciężarówka dalekobieżna o potężnym silniku i komfortowej kabinie.",
         features: [
