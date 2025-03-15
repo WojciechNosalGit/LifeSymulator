@@ -60,8 +60,6 @@ class Resources {
       this.startFood = Math.min(this.foodContainer, this.startFood + amount);
     }
 
-    console.log(this.startWater, this.startFood);
-
     this.render();
   }
 

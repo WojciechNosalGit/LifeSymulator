@@ -190,6 +190,24 @@ class Vehicle {
     document
       .querySelector(".close-vehicle-list_button")
       .addEventListener("click", () => this.closeVehiclesWindow());
+
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("vehicle-popup_back")) {
+        this.closeBigPictureVehicle();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("vehicle-popup_img")) {
+        this.showFullImg(event.target.src);
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("full-img-button")) {
+        this.closeFullImg(event.target.parentElement);
+      }
+    });
   }
 
   formatValueWithSpaces(value) {
@@ -264,12 +282,6 @@ class Vehicle {
       isInGarage,
       vehicleIndex
     );
-
-    document
-      .querySelector(".vehicle-popup_back")
-      .addEventListener("click", () => {
-        this.closeBigPictureVehicle();
-      });
   }
 
   createVehiclePopupHTML(vehicle, isInGarage, vehicleIndex) {
@@ -311,5 +323,28 @@ class Vehicle {
 
   getSelectedVehicle() {
     return this.selectedVehicle;
+  }
+
+  showFullImg(imageSrc) {
+    const div = document.createElement("div");
+    div.classList.add("vehicle-full-img_container");
+
+    const img = document.createElement("img");
+    img.classList.add("vehicle-full-img");
+    img.src = imageSrc;
+
+    const buttonBack = document.createElement("button");
+    buttonBack.classList.add("full-img-button");
+    buttonBack.classList.add("button");
+    buttonBack.innerHTML = "Wstecz";
+
+    div.appendChild(img);
+    div.appendChild(buttonBack);
+
+    document.getElementById("app").appendChild(div);
+  }
+
+  closeFullImg(img) {
+    img.remove();
   }
 }
