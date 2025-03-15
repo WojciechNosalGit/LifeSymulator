@@ -195,6 +195,7 @@ class Game {
 
     this.isAtWork = true;
 
+    clearInterval(this.jobTimerIndex);
     clearInterval(this.resourcesIntervalIndex);
     this.updateResources(job.water * 1000, job.food);
 
@@ -209,9 +210,9 @@ class Game {
 
     this.startProgress(this.jobTime, this.jobProgress);
 
-    this.jobTimerIndex = setTimeout(() => {
-      this.doneJob();
-    }, this.jobTime);
+    // this.jobTimerIndex = setTimeout(() => {
+    //   this.doneJob();
+    // }, this.jobTime);
   }
 
   quitJobHendler() {
@@ -245,35 +246,43 @@ class Game {
     }
   }
 
-  startProgress(workTime, jobProgress) {
+  //Progress bar
+
+  startProgress(totalTime = this.jobTime, fromProgress = this.jobProgress) {
+    this.jobProgress = fromProgress;
+    this.startTime = Date.now();
+
     clearInterval(this.progressBarIndex);
 
-    let progressBar = document.getElementById("progressBar");
+    this.progressBarIndex = setInterval(() => {
+      const elapsedTime = Date.now() - this.startTime;
+      this.jobProgress = fromProgress + (elapsedTime / totalTime) * 100;
 
-    let width = jobProgress;
-    let step = (100 / workTime) * 1000;
-
-    const update = () => {
-      if (width < 100) {
-        width += step;
-        progressBar.style.width = width + "%";
-
-        this.jobProgress = width;
-        this.jobTime -= 1000;
-
-        console.log(step, this.jobTime);
+      if (this.jobProgress >= 100) {
+        this.jobProgress = 100;
+        clearInterval(this.progressBarIndex);
+        this.doneJob();
       }
-    };
-    this.progressBarIndex = setInterval(update, 1000);
+
+      this.updateProgressBar();
+    }, 1000);
+  }
+
+  updateProgressBar() {
+    let progressBar = document.getElementById("progressBar");
+    if (progressBar) {
+      progressBar.style.width = `${this.jobProgress}%`;
+    }
   }
 
   stopProgress() {
-    let progressBar = document.getElementById("progressBar");
+    this.jobProgress = 0;
     clearInterval(this.progressBarIndex);
-    progressBar.style.width = "0%";
-
-    // this.salary.displaySalary();
+    let progressBar = document.getElementById("progressBar");
+    progressBar.style.width = `${this.jobProgress}`;
   }
+
+  //Resources
 
   updateResources(waterConsumption, foodConsumption) {
     this.resources.updateConsumptionRate(waterConsumption, foodConsumption);
