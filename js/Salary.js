@@ -1,11 +1,12 @@
 class Salary {
-  constructor() {
+  constructor(salary = 0) {
     this.curentSalaryElement = document.querySelector(".current-salary");
 
     this.currentJob = null;
     this.bonus = 0;
 
-    this.currentSalary = 0;
+    this.currentSalary = salary;
+    this.displaySalary();
   }
 
   formatValueWithSpaces(value) {
@@ -39,12 +40,29 @@ class Salary {
   }
 
   displaySalary() {
-    this.curentSalaryElement.textContent = `Zarobisz ${this.formatValueWithSpaces(
-      this.currentSalary
-    )} zł`;
+    console.log(this.currentSalary);
+    if (this.currentSalary === 0) {
+      this.curentSalaryElement.textContent = `Nic nie zarabiasz`;
+    } else {
+      this.curentSalaryElement.textContent = `Zarobisz ${this.formatValueWithSpaces(
+        this.currentSalary
+      )} zł`;
+    }
   }
 
   getSalary() {
     return this.currentSalary;
+  }
+
+  toJSON() {
+    return {
+      currentSalary: this.currentSalary,
+    };
+  }
+
+  // **ReRender from localStorage**
+  static fromJSON(data) {
+    console.log(data.currentSalary);
+    return new Salary(data.currentSalary);
   }
 }

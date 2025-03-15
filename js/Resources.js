@@ -1,5 +1,5 @@
 class Resources {
-  constructor(startLevel) {
+  constructor(startLevel, startWater, startFood) {
     this.waterLevelElement = document.querySelector(".water-level span");
     this.foodLevelElement = document.querySelector(".food-level span");
 
@@ -12,8 +12,9 @@ class Resources {
     this.foodRequirement = 2000; // demand for food
 
     this.startLevel = startLevel;
-    this.startWater = this.waterContainer * (this.startLevel / 100);
-    this.startFood = this.foodContainer * (this.startLevel / 100);
+    this.startWater =
+      startWater ?? this.waterContainer * (this.startLevel / 100);
+    this.startFood = startFood ?? this.foodContainer * (this.startLevel / 100);
 
     this.updateConsumptionRate();
   }
@@ -73,5 +74,18 @@ class Resources {
 
     this.waterLevelElement.textContent = `${waterPercentage.toFixed()}%`;
     this.foodLevelElement.textContent = `${foodPercentage.toFixed()}%`;
+  }
+
+  toJSON() {
+    return {
+      startLevel: this.startLevel,
+      startWater: this.startWater,
+      startFood: this.startFood,
+    };
+  }
+
+  // **ReRender from localStorage**
+  static fromJSON(data) {
+    return new Resources(data.startLevel, data.startWater, data.startFood);
   }
 }

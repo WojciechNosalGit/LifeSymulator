@@ -21,6 +21,7 @@ class Game {
     this.equipment = new Equipment();
     this.resources = new Resources(95);
     this.sound = new Sound();
+    this.localStorageManager = new LocalStorageManager();
 
     this.currentJob = null;
     this.currentVehicle = null;
@@ -125,8 +126,70 @@ class Game {
         this.sound.play(this.sound.click);
       }
     });
+
+    //localStorage
+    document
+      .getElementById("save-game-button")
+      .addEventListener("click", () => {
+        this.saveGame();
+      });
+
+    document
+      .getElementById("load-game-button")
+      .addEventListener("click", () => {
+        this.loadGame();
+      });
+
+    // document
+    //   .getElementById("clear-save-button")
+    //   .addEventListener("click", () => {
+    //     this.clearSavedGame();
+    //   });
+  }
+  // LocalStorageManager
+  saveGame() {
+    const gameState = {
+      wallet: this.wallet.account,
+      equipment: this.equipment.toJSON(),
+      resources: this.resources.toJSON(),
+      salary: this.salary.toJSON(),
+
+      // currentSalary: this.currentSalary,
+      currentJob: this.currentJob,
+      currentVehicle: this.currentVehicle,
+      isAtWork: this.isAtWork,
+    };
+
+    this.localStorageManager.saveGameState(gameState);
+
+    console.log(gameState);
   }
 
+  loadGame() {
+    const gameState = this.localStorageManager.loadGameState();
+    if (!gameState) return;
+
+    this.wallet.account = gameState.wallet;
+    this.equipment = Equipment.fromJSON(gameState.equipment);
+    this.resources = Resources.fromJSON(gameState.resources);
+    this.salary = Salary.fromJSON(gameState.salary);
+    this.currentJob = gameState.currentJob;
+    this.currentVehicle = gameState.currentVehicle;
+    this.isAtWork = gameState.isAtWork;
+
+    console.log("Gra wczytana!", gameState);
+
+    if (this.isAtWork && this.currentJob) {
+      this.startProgress(this.jobTime);
+      this.jobTimerIndex = setTimeout(() => {
+        this.doneJob();
+      }, this.jobTime);
+    }
+
+    this.render();
+  }
+
+  //App
   startJob(job) {
     this.sound.play(this.sound.startWork);
 
@@ -153,6 +216,9 @@ class Game {
 
   quitJobHendler() {
     this.sound.play(this.sound.stopWork);
+
+    this.isAtWork = false;
+
     clearInterval(this.jobTimerIndex);
     this.stopProgress();
     this.render();
@@ -202,6 +268,9 @@ class Game {
 
   updateResources(waterConsumption, foodConsumption) {
     this.resources.updateConsumptionRate(waterConsumption, foodConsumption);
+
+    this.resources.reduceResources();
+
     this.resourcesIntervalIndex = setInterval(() => {
       this.resources.reduceResources();
     }, this.reduceResourcesTime);
@@ -246,18 +315,16 @@ class Game {
   }
 
   render() {
-    this.isAtWork = false;
     this.jobButtonsHandler();
+
+    this.isAtWork
+      ? this.startJob(this.currentJob)
+      : (this.charakterNameElement.textContent = "Weź się do roboty");
 
     this.equipment.renderEquipment();
     this.wallet.render();
 
     clearInterval(this.resourcesIntervalIndex);
     this.updateResources();
-
-    this.currentSalaryElement.textContent = !this.isAtWork
-      ? `Nic nie zarabiasz`
-      : this.currentSalary;
-    this.charakterNameElement.textContent = `Weź się do roboty!`;
   }
 }

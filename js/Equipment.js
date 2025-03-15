@@ -128,4 +128,20 @@ class Equipment {
       vehicleList.appendChild(div);
     }
   }
+
+  toJSON() {
+    return {
+      items: this.items,
+      vehicles: this.vehicles,
+    };
+  }
+
+  static fromJSON(data) {
+    const equipment = new Equipment();
+    if (data) {
+      equipment.items = data.items || [];
+      equipment.vehicles = data.vehicles || [];
+    }
+    return equipment;
+  }
 }
