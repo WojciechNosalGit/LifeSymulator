@@ -6,7 +6,7 @@ class Salary {
     this.bonus = 0;
 
     this.currentSalary = salary;
-    this.displaySalary();
+    // this.displaySalary();
   }
 
   formatValueWithSpaces(value) {

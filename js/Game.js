@@ -23,10 +23,12 @@ class Game {
     this.sound = new Sound();
     this.localStorageManager = new LocalStorageManager();
 
-    this.currentJob = null;
     this.currentVehicle = null;
     this.currentSalary = 0;
-    this.jobTime = 1000 * 60 * 10; //milisec*sec*min
+
+    this.currentJob = null;
+    this.jobTime = 1000 * 10 * 1; //milisec*sec*min
+    this.jobProgress = 0;
 
     this.jobTimerIndex = null;
     this.progressBarIndex = null;
@@ -154,10 +156,11 @@ class Game {
       resources: this.resources.toJSON(),
       salary: this.salary.toJSON(),
 
-      // currentSalary: this.currentSalary,
       currentJob: this.currentJob,
       currentVehicle: this.currentVehicle,
       isAtWork: this.isAtWork,
+      jobProgress: this.jobProgress,
+      jobTime: this.jobTime,
     };
 
     this.localStorageManager.saveGameState(gameState);
@@ -173,24 +176,21 @@ class Game {
     this.equipment = Equipment.fromJSON(gameState.equipment);
     this.resources = Resources.fromJSON(gameState.resources);
     this.salary = Salary.fromJSON(gameState.salary);
+
     this.currentJob = gameState.currentJob;
     this.currentVehicle = gameState.currentVehicle;
     this.isAtWork = gameState.isAtWork;
+    this.jobProgress = gameState.jobProgress;
+    this.jobTime = gameState.jobTime;
 
     console.log("Gra wczytana!", gameState);
-
-    if (this.isAtWork && this.currentJob) {
-      this.startProgress(this.jobTime);
-      this.jobTimerIndex = setTimeout(() => {
-        this.doneJob();
-      }, this.jobTime);
-    }
 
     this.render();
   }
 
   //App
   startJob(job) {
+    console.log(job);
     this.sound.play(this.sound.startWork);
 
     this.isAtWork = true;
@@ -207,7 +207,7 @@ class Game {
     this.charakterNameElement.textContent = `Pracujesz jako ${this.currentJob.name}`;
     this.jobButtonsHandler();
 
-    this.startProgress(this.jobTime);
+    this.startProgress(this.jobTime, this.jobProgress);
 
     this.jobTimerIndex = setTimeout(() => {
       this.doneJob();
@@ -245,18 +245,25 @@ class Game {
     }
   }
 
-  startProgress(workTime) {
+  startProgress(workTime, jobProgress) {
+    clearInterval(this.progressBarIndex);
+
     let progressBar = document.getElementById("progressBar");
 
-    let width = 0;
+    let width = jobProgress;
     let step = (100 / workTime) * 1000;
 
-    function update() {
+    const update = () => {
       if (width < 100) {
         width += step;
         progressBar.style.width = width + "%";
+
+        this.jobProgress = width;
+        this.jobTime -= 1000;
+
+        console.log(step, this.jobTime);
       }
-    }
+    };
     this.progressBarIndex = setInterval(update, 1000);
   }
 
@@ -264,6 +271,8 @@ class Game {
     let progressBar = document.getElementById("progressBar");
     clearInterval(this.progressBarIndex);
     progressBar.style.width = "0%";
+
+    // this.salary.displaySalary();
   }
 
   updateResources(waterConsumption, foodConsumption) {
