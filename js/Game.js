@@ -19,7 +19,7 @@ class Game {
     this.grocery = new Grocery();
     this.vehicle = new Vehicle();
     this.equipment = new Equipment();
-    this.resources = new Resources(95);
+    this.resources = new Resources(50);
     this.sound = new Sound();
     this.localStorageManager = new LocalStorageManager();
 
@@ -27,7 +27,7 @@ class Game {
     this.currentSalary = 0;
 
     this.currentJob = null;
-    this.jobTime = 1000 * 10 * 1; //milisec*sec*min
+    this.jobTime = 1000 * 60 * 10; //milisec*sec*min
     this.jobProgress = 0;
 
     this.jobTimerIndex = null;
@@ -69,7 +69,7 @@ class Game {
     });
 
     this.quitJobButton.addEventListener("click", () => {
-      this.quitJobHendler();
+      this.quitJob();
     });
 
     // shop - grocery
@@ -171,7 +171,7 @@ class Game {
     const gameState = this.localStorageManager.loadGameState();
     if (!gameState) return;
 
-    this.wallet.account = gameState.wallet;
+    this.wallet.account = gameState.wallet ?? 200;
     this.equipment = Equipment.fromJSON(gameState.equipment);
     this.resources = Resources.fromJSON(gameState.resources);
 
@@ -217,12 +217,8 @@ class Game {
     this.charakterState();
   }
 
-  quitJobHendler() {
+  quitJob() {
     this.sound.play(this.sound.stopWork);
-
-    this.isAtWork = false;
-    this.currentSalary = 0;
-    this.currentJob = null;
 
     clearInterval(this.jobTimerIndex);
     this.stopProgress();
@@ -234,10 +230,6 @@ class Game {
 
     this.wallet.addMoneyToAccount(this.currentSalary);
     this.stopProgress();
-
-    this.isAtWork = false;
-    this.currentSalary = 0;
-    this.currentJob = null;
 
     this.render();
   }
@@ -283,9 +275,13 @@ class Game {
 
   stopProgress() {
     this.jobProgress = 0;
+    this.isAtWork = false;
+    this.currentSalary = 0;
+    this.currentJob = null;
+
     clearInterval(this.progressBarIndex);
     let progressBar = document.getElementById("progressBar");
-    progressBar.style.width = `${this.jobProgress}`;
+    progressBar.style.width = `${this.jobProgress}%`;
   }
 
   //Resources
