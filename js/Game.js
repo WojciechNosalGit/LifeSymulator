@@ -43,6 +43,10 @@ class Game {
     this.render();
   }
 
+  formatValueWithSpaces(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
+
   initEvents() {
     this.selectJobButton.addEventListener("click", () =>
       this.profession.showJobsWindow()
@@ -139,22 +143,18 @@ class Game {
     document
       .getElementById("load-game-button")
       .addEventListener("click", () => {
-        this.loadGame();
+        this.showLoadGameModal();
       });
-
-    // document
-    //   .getElementById("clear-save-button")
-    //   .addEventListener("click", () => {
-    //     this.clearSavedGame();
-    //   });
   }
   // LocalStorageManager
   saveGame() {
+    const saveName = prompt("Podaj nazwę zapisu gry:");
+    if (!saveName) return alert("Zapis gry anulowany.");
+
     const gameState = {
       wallet: this.wallet.account,
       equipment: this.equipment.toJSON(),
       resources: this.resources.toJSON(),
-      // salary: this.salary.toJSON(),
 
       salary: this.currentSalary,
       currentJob: this.currentJob,
@@ -164,31 +164,75 @@ class Game {
       jobTime: this.jobTime,
     };
 
-    this.localStorageManager.saveGameState(gameState);
+    let saves = JSON.parse(localStorage.getItem("gameSaves")) || {};
+    saves[saveName] = gameState;
+    localStorage.setItem("gameSaves", JSON.stringify(saves));
+
+    alert(`Gra zapisana jako "${saveName}"`);
   }
 
-  loadGame() {
-    const gameState = this.localStorageManager.loadGameState();
-    if (!gameState) return;
+  loadGame(saveName) {
+    let saves = JSON.parse(localStorage.getItem("gameSaves")) || {};
+    let gameState = saves[saveName];
+
+    if (!gameState) return alert("Nie znaleziono zapisu.");
 
     this.wallet.account = gameState.wallet ?? 200;
-    this.equipment = Equipment.fromJSON(gameState.equipment);
-    this.resources = Resources.fromJSON(gameState.resources);
+    this.equipment = Equipment.fromJSON(gameState.equipment ?? {});
+    this.resources = Resources.fromJSON(gameState.resources ?? {});
 
-    this.currentSalary = gameState.salary;
-    this.currentJob = gameState.currentJob;
-    this.currentVehicle = gameState.currentVehicle;
-    this.isAtWork = gameState.isAtWork;
-    this.jobProgress = gameState.jobProgress;
-    this.jobTime = gameState.jobTime;
+    this.currentSalary = gameState.salary ?? 0;
+    this.currentJob = gameState.currentJob ?? null;
+    this.currentVehicle = gameState.currentVehicle ?? null;
+    this.isAtWork = gameState.isAtWork ?? false;
+    this.jobProgress = gameState.jobProgress ?? 0;
+    this.jobTime = gameState.jobTime ?? 1000 * 10 * 1;
 
-    console.log("Gra wczytana!", gameState);
+    alert(`Gra "${saveName}" wczytana!`);
 
+    document.getElementById("loadGameModal").style.display = "none";
     this.render();
   }
 
-  formatValueWithSpaces(value) {
-    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  showLoadGameModal() {
+    let saves = JSON.parse(localStorage.getItem("gameSaves")) || {};
+    let saveNames = Object.keys(saves);
+
+    if (saveNames.length === 0) {
+      return alert("Brak zapisanych gier.");
+    }
+
+    let saveList = document.getElementById("saveList");
+    saveList.innerHTML = "";
+
+    saveNames.forEach((saveName) => {
+      let listItem = document.createElement("li");
+      listItem.addEventListener("click", () => this.loadGame(saveName));
+
+      const p = document.createElement("span");
+      p.textContent = saveName;
+
+      const bin = document.createElement("span");
+      bin.textContent = "🗑️";
+      bin.classList.add("bin");
+      bin.addEventListener("click", (event) => {
+        event.stopPropagation();
+        delete saves[saveName];
+        localStorage.setItem("gameSaves", JSON.stringify(saves));
+        this.showLoadGameModal();
+      });
+
+      listItem.appendChild(p);
+      listItem.appendChild(bin);
+
+      saveList.appendChild(listItem);
+    });
+
+    document.getElementById("loadGameModal").style.display = "block";
+
+    document.querySelector(".close").addEventListener("click", () => {
+      document.getElementById("loadGameModal").style.display = "none";
+    });
   }
 
   //App
@@ -343,6 +387,8 @@ class Game {
     } else {
       this.charakterNameElement.textContent = "Weź się do roboty";
       this.currentSalaryElement.textContent = `Nic nie zarabiasz`;
+
+      this.stopProgress();
     }
   }
 

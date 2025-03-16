@@ -1,0 +1,47 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  font-size: 1.4rem;
+  text-align: center;
+}
+.close {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  cursor: pointer;
+  font-size: 32px;
+}
+ul#saveList {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+ul#saveList li {
+  position: relative;
+  font-size: 1.6rem;
+  padding: 10px;
+  background: #eceaea;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+ul#saveList li:hover {
+  background: #ddd;
+}
+
+.bin {
+  position: absolute;
+  right: 8px;
+  top: 6px;
+}

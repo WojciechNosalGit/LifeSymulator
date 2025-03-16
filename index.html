@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style/equpment.css" />
     <link rel="stylesheet" href="style/grocery.css" />
     <link rel="stylesheet" href="style/vehicle.css" />
+    <link rel="stylesheet" href="style/modal.css" />
     <title>Life symulator</title>
   </head>
   <body>
@@ -111,6 +112,14 @@
       <div class="buttons_container game-button-container">
         <button id="save-game-button" class="button">Zapisz</button>
         <button id="load-game-button" class="button">Wczytaj</button>
+      </div>
+
+      <div id="loadGameModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Wybierz zapis gry</h2>
+          <ul id="saveList"></ul>
+        </div>
       </div>
     </div>
     <script src="js/jobsList.js"></script>
