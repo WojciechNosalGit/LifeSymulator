@@ -1,7 +1,7 @@
 const professions = [
   {
     name: "Policjant",
-    salaryRange: [10000, 15000],
+    salaryRange: [8000, 15000],
     image: "policeman.jpg",
     description: "Stróż prawa dbający o bezpieczeństwo na ulicach.",
     water: 3,
@@ -12,7 +12,7 @@ const professions = [
   },
   {
     name: "YouTuber",
-    salaryRange: [1000, 150000],
+    salaryRange: [3, 1000],
     image: "youtuber.jpg",
     description: "Nagrywa i montuje filmy. Lubi dostawać suby i łapki w górę.",
     water: 3,
@@ -22,7 +22,7 @@ const professions = [
   },
   {
     name: "Strażak",
-    salaryRange: [9000, 14000],
+    salaryRange: [9000, 16000],
     image: "fireman.jpg",
     description: "Ratownik gaszący pożary i ratujący ludzi.",
     water: 4,
@@ -32,7 +32,7 @@ const professions = [
   },
   {
     name: "Lekarz",
-    salaryRange: [18000, 22000],
+    salaryRange: [9000, 22000],
     image: "doctor.jpg",
     description: "Specjalista zajmujący się leczeniem pacjentów.",
     water: 2,
@@ -42,7 +42,7 @@ const professions = [
   },
   {
     name: "Nauczyciel",
-    salaryRange: [7000, 10000],
+    salaryRange: [100, 500],
     image: "teacher.jpg",
     description: "Przekazuje wiedzę kolejnym pokoleniom.",
     water: 2,
@@ -52,7 +52,7 @@ const professions = [
   },
   {
     name: "Mechanik",
-    salaryRange: [8000, 12000],
+    salaryRange: [8000, 11000],
     image: "mechanic.jpg",
     description: "Naprawia i konserwuje pojazdy.",
     water: 2,
@@ -72,7 +72,7 @@ const professions = [
   },
   {
     name: "Rolnik",
-    salaryRange: [6000, 9000],
+    salaryRange: [100, 700],
     image: "farmer.jpg",
     description: "Uprawia ziemię i hoduje zwierzęta.",
     water: 5,
@@ -92,7 +92,7 @@ const professions = [
   },
   {
     name: "Programista",
-    salaryRange: [14000, 20000],
+    salaryRange: [500, 5000],
     image: "programmer.jpg",
     description: "Pisze i rozwija oprogramowanie.",
     water: 1,
@@ -102,7 +102,7 @@ const professions = [
   },
   {
     name: "Kucharz",
-    salaryRange: [7000, 11000],
+    salaryRange: [7000, 8000],
     image: "cook.jpg",
     description: "Przygotowuje pyszne posiłki dla klientów.",
     water: 3,
