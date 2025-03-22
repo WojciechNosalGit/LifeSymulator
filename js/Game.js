@@ -15,7 +15,7 @@ class Game {
 
     this.salary = new Salary();
     this.profession = new Profession();
-    this.wallet = new Wallet(200);
+    this.wallet = new Wallet(2000000);
     this.grocery = new Grocery();
     this.vehicle = new Vehicle();
     this.equipment = new Equipment();
@@ -343,8 +343,10 @@ class Game {
   // //grocery
   buyGroceryFromShop(item) {
     if (this.wallet.checkIfEnoughMoney(item.cost)) {
-      this.wallet.substractMoneyFromAccont(item.cost);
-      this.equipment.addItem(item);
+      const added = this.equipment.addItem(item);
+      if (added) {
+        this.wallet.substractMoneyFromAccont(item.cost);
+      }
     }
   }
 
@@ -363,10 +365,12 @@ class Game {
   buyVehicle(vehicle) {
     this.sound.play(this.sound.click);
     if (this.wallet.checkIfEnoughMoney(vehicle.price)) {
-      this.wallet.substractMoneyFromAccont(vehicle.price);
-      this.equipment.addItem(vehicle, "vehicle");
-      this.vehicle.closeVehiclesWindow();
-      this.vehicle.closeBigPictureVehicle();
+      const added = this.equipment.addItem(vehicle, "vehicle");
+      if (added) {
+        this.wallet.substractMoneyFromAccont(vehicle.price);
+        this.vehicle.closeVehiclesWindow();
+        this.vehicle.closeBigPictureVehicle();
+      }
     }
   }
 

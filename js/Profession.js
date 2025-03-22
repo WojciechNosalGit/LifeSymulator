@@ -101,7 +101,7 @@ class Profession {
           <img src="assets/images/${job.image}" alt="${job.name}" />
           <div>
             <div class="title">${job.name}</div>
-            <div class="salary">${salaryText} PLN</div>
+            <div class="salary">${salaryText}</div>
           </div>
         </div>
         <div class="description">

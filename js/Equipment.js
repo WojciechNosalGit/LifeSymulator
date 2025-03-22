@@ -7,7 +7,7 @@ class Equipment {
         icon: "💧",
         fuel: 200,
         cost: 30,
-        amount: 1,
+        amount: 7,
         toDrink: true,
       },
     ];
@@ -42,22 +42,25 @@ class Equipment {
       //only one vehicle
       if (type !== "grocery") {
         this.sound.play(this.sound.alert);
-        return alert("Nie możesz mieć więcej niż jeden pojazd!");
+        alert("Nie możesz mieć więcej niż jeden taki pojazd!");
+        return false;
       }
       //max 8 items
       if (existingItem.amount >= 8) {
         this.sound.play(this.sound.alert);
-        return alert(
-          "Nie bądź zachłanny! Masz już maksymalną ilość tego przedmiotu!"
-        );
+        alert("Nie bądź zachłanny! Masz już maksymalną ilość tego przedmiotu!");
+        return false;
       }
       existingItem.amount += 1;
+      this.renderEquipment();
+      return true;
     } else {
       //if not set to 1
       item.amount = 1;
       collection.push(item);
+      this.renderEquipment();
+      return true;
     }
-    this.renderEquipment();
   }
 
   useItem(index) {
