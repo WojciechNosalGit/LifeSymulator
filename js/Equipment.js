@@ -7,14 +7,14 @@ class Equipment {
         icon: "💧",
         fuel: 200,
         cost: 30,
-        amount: 7,
+        amount: 1,
         toDrink: true,
       },
     ];
     this.vehicles = [
       {
         name: "Segway Ninebot MAX",
-        price: 800,
+        price: 51000,
         image: "segway_ninebot.jpeg",
         description:
           "Elektryczna hulajnoga o dużym zasięgu, idealna do miejskiej mobilności.",

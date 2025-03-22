@@ -15,7 +15,7 @@ class Game {
 
     this.salary = new Salary();
     this.profession = new Profession();
-    this.wallet = new Wallet(2000000);
+    this.wallet = new Wallet(20);
     this.grocery = new Grocery();
     this.vehicle = new Vehicle();
     this.equipment = new Equipment();
@@ -264,8 +264,23 @@ class Game {
   quitJob() {
     this.sound.play(this.sound.stopWork);
 
+    //pay for break job
+    let penalty = this.currentSalary * 0.2;
+
+    if (!this.wallet.checkIfEnoughMoney(penalty, true))
+      penalty = this.wallet.account;
+
+    this.wallet.substractMoneyFromAccont(penalty);
+
+    alert(
+      "Przerwa w pracy, zapłacono 20% pensji lub wartość konta jeśli nie było środków. Kara: " +
+        penalty +
+        " PLN"
+    );
+
     clearInterval(this.jobTimerIndex);
     this.stopProgress();
+
     this.render();
   }
 
@@ -377,6 +392,9 @@ class Game {
   sellVehicle(index) {
     this.sound.play(this.sound.click);
     const vehicle = this.equipment.vehicles[index];
+
+    alert(`Sprzedano ${vehicle.name} za ${vehicle.price * 0.7} PLN`);
+
     this.wallet.addMoneyToAccount(vehicle.price * 0.7);
     this.equipment.sellVehicle(index);
     this.vehicle.closeBigPictureVehicle();
