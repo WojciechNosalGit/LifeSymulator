@@ -46,9 +46,9 @@ class Resources {
 
   isFull(toDrink) {
     if (toDrink) {
-      if (this.startWater === this.waterContainer) return true;
+      if (this.startWater >= (this.waterContainer * 99) / 100) return true;
     } else {
-      if (this.startFood === this.foodContainer) return true;
+      if (this.startFood >= (this.foodContainer * 99) / 100) return true;
     }
     return false;
   }
