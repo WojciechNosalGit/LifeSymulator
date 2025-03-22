@@ -14,7 +14,7 @@ class Equipment {
     this.vehicles = [
       {
         name: "Segway Ninebot MAX",
-        price: 51000,
+        price: 800,
         image: "segway_ninebot.jpeg",
         description:
           "Elektryczna hulajnoga o dużym zasięgu, idealna do miejskiej mobilności.",
