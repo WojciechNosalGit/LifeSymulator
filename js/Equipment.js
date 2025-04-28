@@ -30,6 +30,7 @@ class Equipment {
   }
 
   getItem(index) {
+    console.log(index);
     return this.items[index];
   }
 

@@ -120,6 +120,14 @@ class Game {
       }
     });
 
+    //drive vehicle
+    document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("vehicle-drive")) {
+        const index = event.target.dataset.index;
+        this.driveCar(index);
+      }
+    });
+
     //click sound for buttons
     document.addEventListener("click", (event) => {
       if (event.target.classList.contains("close-x")) {
@@ -400,6 +408,13 @@ class Game {
     this.vehicle.closeBigPictureVehicle();
   }
 
+  driveCar(index) {
+    //sound
+    const vehicle = this.equipment.vehicles[index];
+    console.log(`jedziesz ${vehicle.name}`);
+  }
+
+  //charakter state
   charakterState() {
     if (this.isAtWork) {
       this.charakterNameElement.textContent = `Pracujesz jako ${this.currentJob.name}`;

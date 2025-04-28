@@ -285,8 +285,14 @@ class Vehicle {
   }
 
   createVehiclePopupHTML(vehicle, isInGarage, vehicleIndex) {
+    // console.log(vehicle);
     return `
         <div class="header vehicle-popup_header">
+        ${
+          isInGarage
+            ? `<button class="button vehicle-drive" data-index=${vehicleIndex}>Śmigaj</button>`
+            : ""
+        }
           <img class="vehicle-popup_img" src="assets/images/${
             vehicle.image
           }" alt="${vehicle.name}" />
@@ -322,6 +328,7 @@ class Vehicle {
   }
 
   getSelectedVehicle() {
+    console.log(this.selectedVehicle);
     return this.selectedVehicle;
   }
 

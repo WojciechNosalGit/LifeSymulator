@@ -146,3 +146,11 @@ img.vehicle-popup_img {
     left: 16px;
   }
 }
+
+.vehicle-drive {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 120px;
+  background-color: var(--orange);
+}

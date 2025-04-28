@@ -75,3 +75,7 @@ body {
   background-color: var(--secound-color);
   transition: width 0.1s;
 }
+
+.progress-drive {
+  /* background-color: var(--main-color); */
+}
