@@ -4,6 +4,7 @@ class Vehicle {
       {
         name: "Ford Mustang",
         price: 50000,
+        drivePirce: 16,
         image: "mustang.jpeg",
         description:
           "Legendarny amerykański muscle car o agresywnym wyglądzie i potężnym silniku.",

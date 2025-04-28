@@ -35,6 +35,11 @@ class Game {
 
     this.isAtWork = false;
 
+    //drive
+    this.driveProgress = 0;
+    this.driveProgressIndex = null;
+    this.driveTime = 1000 * 15; // 5 minut
+
     this.resourcesIntervalIndex = null;
     this.reduceResourcesTime = 3000;
 
@@ -411,7 +416,49 @@ class Game {
   driveCar(index) {
     //sound
     const vehicle = this.equipment.vehicles[index];
-    console.log(`jedziesz ${vehicle.name}`);
+    clearInterval(this.driveProgressIndex);
+
+    this.startDriveProgress(vehicle, this.driveTime);
+
+    this.vehicle.closeBigPictureVehicle();
+  }
+
+  startDriveProgress(vehicle, totalTime) {
+    this.driveProgress = 0;
+    this.startDriveTime = Date.now();
+
+    clearInterval(this.driveProgressIndex);
+
+    this.driveProgressIndex = setInterval(() => {
+      const elapsedTime = Date.now() - this.startDriveTime;
+      this.driveProgress = (elapsedTime / totalTime) * 100;
+
+      if (this.driveProgress >= 100) {
+        this.driveProgress = 100;
+        clearInterval(this.driveProgressIndex);
+        this.doneDrive(vehicle);
+      }
+
+      this.updateDriveProgressBar();
+    }, 1000); // co sekundę aktualizacja
+  }
+
+  updateDriveProgressBar() {
+    let progressBar = document.getElementById("progressDrive");
+    if (progressBar) {
+      progressBar.style.width = `${this.driveProgress}%`;
+    }
+  }
+
+  doneDrive(vehicle) {
+    // this.sound.play(this.sound.doneWork); klakson
+    this.driveProgress = 0;
+    if (progressBar) {
+      progressBar.style.width = `${this.driveProgress}%`;
+    }
+    console.log("zarobiłeś " + vehicle.drivePrice);
+
+    this.wallet.addMoneyToAccount(vehicle.drivePrice);
   }
 
   //charakter state
