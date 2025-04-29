@@ -65,7 +65,7 @@ body {
   margin: 16px auto;
   background-color: #fff;
   border-radius: 8px;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 }
 .progress-bar {
@@ -78,4 +78,8 @@ body {
 
 .progress-drive {
   background-color: var(--main-color);
+}
+
+#carIcon {
+  font-size: 32px;
 }

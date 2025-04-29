@@ -38,7 +38,7 @@ class Game {
     //drive
     this.driveProgress = 0;
     this.driveProgressIndex = null;
-    this.driveTime = 1000 * 15; // 5 minut
+    this.driveTime = 1000 * 5; // 5 minut
 
     this.resourcesIntervalIndex = null;
     this.reduceResourcesTime = 3000;
@@ -416,7 +416,9 @@ class Game {
   driveCar(index) {
     //sound
     const vehicle = this.equipment.vehicles[index];
+
     clearInterval(this.driveProgressIndex);
+    this.driveProgress = 0;
 
     this.startDriveProgress(vehicle, this.driveTime);
 
@@ -424,10 +426,26 @@ class Game {
   }
 
   startDriveProgress(vehicle, totalTime) {
-    this.driveProgress = 0;
-    this.startDriveTime = Date.now();
+    const driveProgressBar = document.getElementById("progressDrive");
 
-    clearInterval(this.driveProgressIndex);
+    let carIcon = document.getElementById("carIcon");
+    if (!carIcon) {
+      carIcon = document.createElement("span");
+      carIcon.id = "carIcon";
+      carIcon.textContent = "🚗";
+      carIcon.style.position = "absolute";
+      carIcon.style.top = "0";
+      carIcon.style.left = "0";
+      carIcon.style.transform = "translate(-20%,-60%)";
+      carIcon.style.transition = "left 1s linear"; // płynne przesuwanie
+      document.querySelector(".progress-container-drive").appendChild(carIcon);
+    }
+
+    const containerWidth = document.querySelector(
+      ".progress-container-drive"
+    ).offsetWidth;
+
+    this.startDriveTime = Date.now();
 
     this.driveProgressIndex = setInterval(() => {
       const elapsedTime = Date.now() - this.startDriveTime;
@@ -435,12 +453,16 @@ class Game {
 
       if (this.driveProgress >= 100) {
         this.driveProgress = 100;
-        clearInterval(this.driveProgressIndex);
+        // koniec jazdy - możesz coś zrobić np. alert
         this.doneDrive(vehicle);
       }
 
-      this.updateDriveProgressBar();
-    }, 1000); // co sekundę aktualizacja
+      driveProgressBar.style.width = `${this.driveProgress}%`;
+
+      // Przesuwanie ikonki auta
+      const moveDistance = (containerWidth - 30) * (this.driveProgress / 100); // 30 = poprawka wielkości auta
+      carIcon.style.left = `${moveDistance}px`;
+    }, 1000);
   }
 
   updateDriveProgressBar() {
@@ -453,6 +475,10 @@ class Game {
   doneDrive(vehicle) {
     // this.sound.play(this.sound.doneWork); klakson
     this.driveProgress = 0;
+    clearInterval(this.driveProgressIndex);
+
+    // console.log(vehicle);
+
     if (progressBar) {
       progressBar.style.width = `${this.driveProgress}%`;
     }
