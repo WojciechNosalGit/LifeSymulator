@@ -27,7 +27,7 @@ class Game {
     this.currentSalary = 0;
 
     this.currentJob = null;
-    this.jobTime = 1000 * 60 * 10; //milisec*sec*min
+    this.jobTime = 1000 * 5; //milisec*sec*min (1000 * 60 * 10)
     this.jobProgress = 0;
 
     this.jobTimerIndex = null;
@@ -70,6 +70,7 @@ class Game {
       this.vehicle.showVehiclesWindow();
     });
 
+    // job
     document.addEventListener("click", (event) => {
       if (event.target.classList.contains("job-popup_select")) {
         this.currentJob = this.profession.getSelectedJob();
@@ -249,6 +250,7 @@ class Game {
   }
 
   //App
+  //Job
   startJob(job) {
     if (!job) return;
     this.sound.play(this.sound.startWork);
@@ -301,6 +303,7 @@ class Game {
     this.sound.play(this.sound.doneWork);
 
     this.wallet.addMoneyToAccount(this.currentSalary);
+    this.randomChanseToIncresePrice();
     this.stopProgress();
 
     this.render();
@@ -313,6 +316,17 @@ class Game {
     } else {
       this.selectJobButton.classList.remove("display-none");
       this.quitJobButton.classList.add("display-none");
+    }
+  }
+
+  randomChanseToIncresePrice() {
+    if (Math.random() < 0.35) {
+      this.vehicle.increaseVehiclePrice();
+      console.log("Ceny aut w górę");
+    }
+    if (Math.random() < 0.25) {
+      this.grocery.increaseGroceryPrice();
+      console.log("Ceny żarcia w górę");
     }
   }
 

@@ -261,10 +261,11 @@ class Vehicle {
     li.appendChild(img);
     li.appendChild(div);
 
-    this.vehicleList.appendChild(li);
+    document.getElementById("vehicle-list").appendChild(li);
   }
 
   addVehicleElementsToList() {
+    document.getElementById("vehicle-list").textContent = "";
     this.vehicles.forEach((vehicle) => {
       this.createVehicleElement(vehicle);
     });
@@ -376,5 +377,12 @@ class Vehicle {
 
   closeFullImg(img) {
     img.remove();
+  }
+
+  increaseVehiclePrice() {
+    this.vehicles.forEach((item) => {
+      item.price += 1000;
+    });
+    this.addVehicleElementsToList();
   }
 }

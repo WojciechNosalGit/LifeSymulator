@@ -73,4 +73,11 @@ class Grocery {
   closeShopWindow() {
     this.shopListContainer.classList.add("display-none");
   }
+
+  increaseGroceryPrice() {
+    this.items.forEach((item) => {
+      item.cost += 5;
+    });
+    this.addItemsToList();
+  }
 }
