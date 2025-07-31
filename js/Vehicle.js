@@ -385,4 +385,20 @@ class Vehicle {
     });
     this.addVehicleElementsToList();
   }
+
+  //JSON
+  toJSON() {
+    return {
+      vehicles: this.vehicles,
+    };
+  }
+
+  static fromJSON(data) {
+    const vehicle = new Vehicle();
+    if (data) {
+      vehicle.vehicles = data.vehicles || [];
+      console.log(vehicle.vehicles);
+    }
+    return vehicle;
+  }
 }

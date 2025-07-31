@@ -80,4 +80,19 @@ class Grocery {
     });
     this.addItemsToList();
   }
+
+  //JSON
+  toJSON() {
+    return {
+      items: this.items,
+    };
+  }
+
+  static fromJSON(data) {
+    const grocery = new Grocery();
+    if (data) {
+      grocery.items = data.items || [];
+    }
+    return grocery;
+  }
 }

@@ -67,6 +67,7 @@ class Game {
     });
 
     this.showVehiclesButton.addEventListener("click", () => {
+      this.vehicle.addVehicleElementsToList();
       this.vehicle.showVehiclesWindow();
     });
 
@@ -169,6 +170,8 @@ class Game {
       wallet: this.wallet.account,
       equipment: this.equipment.toJSON(),
       resources: this.resources.toJSON(),
+      grocery: this.grocery.toJSON(),
+      vehicle: this.vehicle.toJSON(),
 
       salary: this.currentSalary,
       currentJob: this.currentJob,
@@ -194,6 +197,8 @@ class Game {
     this.wallet.account = gameState.wallet ?? 20;
     this.equipment = Equipment.fromJSON(gameState.equipment ?? {});
     this.resources = Resources.fromJSON(gameState.resources ?? {});
+    this.grocery = Grocery.fromJSON(gameState.grocery);
+    this.vehicle = Vehicle.fromJSON(gameState.vehicle);
 
     this.currentSalary = gameState.salary ?? 0;
     this.currentJob = gameState.currentJob ?? null;
@@ -320,11 +325,11 @@ class Game {
   }
 
   randomChanseToIncresePrice() {
-    if (Math.random() < 0.35) {
+    if (Math.random() < 0.95) {
       this.vehicle.increaseVehiclePrice();
       console.log("Ceny aut w górę");
     }
-    if (Math.random() < 0.25) {
+    if (Math.random() < 1) {
       this.grocery.increaseGroceryPrice();
       console.log("Ceny żarcia w górę");
     }
