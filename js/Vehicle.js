@@ -50,7 +50,7 @@ class Vehicle {
       {
         name: "Lamborghini Aventador",
         price: 400000,
-        drivePrice: 100,
+        drivePrice: 400,
 
         image: "lamborghini_aventador.jpeg",
         description:

@@ -40,6 +40,8 @@ class Wallet {
   }
 
   addMoneyToAccount(money) {
+    money = Math.round(money);
+
     this.sound.play(this.sound.addMoney);
     this.account += money;
     this.applyTaxes(); // check if taxes should be applied
@@ -47,6 +49,8 @@ class Wallet {
   }
 
   substractMoneyFromAccont(money) {
+    money = Math.round(money);
+
     this.sound.play(this.sound.spendMoney);
     this.account -= money;
     this.render();

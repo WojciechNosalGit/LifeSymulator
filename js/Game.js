@@ -38,7 +38,7 @@ class Game {
     //drive
     this.driveProgress = 0;
     this.driveProgressIndex = null;
-    this.driveTime = 1000 * 5; // 5 minut
+    this.driveTime = 1000 * 60 * 5; // 5 minut
 
     this.resourcesIntervalIndex = null;
     this.reduceResourcesTime = 3000;
@@ -190,7 +190,7 @@ class Game {
 
     if (!gameState) return alert("Nie znaleziono zapisu.");
 
-    this.wallet.account = gameState.wallet ?? 200;
+    this.wallet.account = gameState.wallet ?? 20;
     this.equipment = Equipment.fromJSON(gameState.equipment ?? {});
     this.resources = Resources.fromJSON(gameState.resources ?? {});
 
@@ -365,6 +365,11 @@ class Game {
 
     this.resourcesIntervalIndex = setInterval(() => {
       this.resources.reduceResources();
+      if (this.resources.reduceResources() === true) {
+        document.body.innerHTML = "<h1 class='gameOver'>umarłeś!</h1>";
+        clearInterval(this.resourcesIntervalIndex);
+        //sound game over
+      }
     }, this.reduceResourcesTime);
   }
 
@@ -403,6 +408,9 @@ class Game {
   }
 
   sellVehicle(index) {
+    if (this.driveProgress > 0)
+      return alert("Musisz wrócić z trasy żebu sprzedać pojazdy");
+
     this.sound.play(this.sound.click);
     const vehicle = this.equipment.vehicles[index];
 
@@ -415,6 +423,8 @@ class Game {
 
   driveCar(index) {
     //sound
+
+    if (this.driveProgress > 0) return alert("juz jedziesz");
     const vehicle = this.equipment.vehicles[index];
 
     clearInterval(this.driveProgressIndex);
@@ -436,7 +446,7 @@ class Game {
       carIcon.style.position = "absolute";
       carIcon.style.top = "0";
       carIcon.style.left = "0";
-      carIcon.style.transform = "translate(-20%,-60%)";
+      carIcon.style.transform = "translate(-20%,-50%) rotateY(180deg)";
       carIcon.style.transition = "left 1s linear"; // płynne przesuwanie
       document.querySelector(".progress-container-drive").appendChild(carIcon);
     }
@@ -477,12 +487,7 @@ class Game {
     this.driveProgress = 0;
     clearInterval(this.driveProgressIndex);
 
-    // console.log(vehicle);
-
-    if (progressBar) {
-      progressBar.style.width = `${this.driveProgress}%`;
-    }
-    console.log("zarobiłeś " + vehicle.drivePrice);
+    this.updateDriveProgressBar();
 
     this.wallet.addMoneyToAccount(vehicle.drivePrice);
   }

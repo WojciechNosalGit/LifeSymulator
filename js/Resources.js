@@ -38,7 +38,8 @@ class Resources {
 
     if (this.startWater === 0 || this.startFood === 0) {
       this.sound.play(this.sound.alert);
-      return alert("Jesteś wyczerpany! KONIEC GRY!");
+      // return alert("Jesteś wyczerpany! KONIEC GRY!");
+      return true;
     }
 
     this.render();
