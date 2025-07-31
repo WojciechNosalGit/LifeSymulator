@@ -38,7 +38,7 @@ class Game {
     //drive
     this.driveProgress = 0;
     this.driveProgressIndex = null;
-    this.driveTime = 1000 * 60 * 5; // 5 minut
+    this.driveTime = 1000 * 60 * 5; // 5 minut (1000 * 60 * 5)
 
     this.resourcesIntervalIndex = null;
     this.reduceResourcesTime = 3000;
@@ -325,11 +325,11 @@ class Game {
   }
 
   randomChanseToIncresePrice() {
-    if (Math.random() < 0.95) {
+    if (Math.random() < 0.35) {
       this.vehicle.increaseVehiclePrice();
       console.log("Ceny aut w górę");
     }
-    if (Math.random() < 1) {
+    if (Math.random() < 0.25) {
       this.grocery.increaseGroceryPrice();
       console.log("Ceny żarcia w górę");
     }
@@ -507,7 +507,6 @@ class Game {
     clearInterval(this.driveProgressIndex);
 
     this.updateDriveProgressBar();
-
     this.wallet.addMoneyToAccount(vehicle.drivePrice);
   }
 
