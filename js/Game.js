@@ -27,7 +27,7 @@ class Game {
     this.currentSalary = 0;
 
     this.currentJob = null;
-    this.jobTime = 1000 * 5; //milisec*sec*min (1000 * 60 * 10)
+    this.jobTime = 1000 * 60 * 10; //milisec*sec*min (1000 * 60 * 10)
     this.jobProgress = 0;
 
     this.jobTimerIndex = null;
