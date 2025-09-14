@@ -4,79 +4,76 @@ class Vehicle {
       {
         name: "Ford Mustang",
         price: 50000,
-        drivePrice: 50,
         image: "mustang.jpeg",
         description:
           "Legendarny amerykański muscle car o agresywnym wyglądzie i potężnym silniku.",
         features: ["5.0L V8", "Klasyczny design", "Sportowe zawieszenie"],
+        jobTimeInMinutes: 7.5,
       },
       {
         name: "Tesla Model S",
         price: 80000,
-        drivePrice: 80,
         image: "tesla_model_s.jpeg",
         description:
           "Nowoczesny elektryczny sedan, który łączy luksus z niesamowitymi osiągami.",
         features: ["Autopilot", "Zasięg 600 km", "0-100 km/h w 2.1s"],
+        jobTimeInMinutes:7.2,
       },
       {
         name: "Volkswagen Golf GTI",
         price: 35000,
-        drivePrice: 35,
         image: "golf_gti.jpeg",
         description:
           "Kompaktowy hot hatch, który oferuje świetne osiągi i codzienną praktyczność.",
         features: ["Turbo 2.0L", "Skrzynia DSG", "Sportowe fotele"],
+        jobTimeInMinutes:7.7,
       },
       {
         name: "BMW M3",
         price: 70000,
-        drivePrice: 70,
         image: "bmw_m3.jpeg",
         description:
           "Sportowy sedan z niemiecką precyzją i mocnym silnikiem R6 turbo.",
         features: ["Drift Mode", "Moc 510 KM", "Carbonowe dodatki"],
+        jobTimeInMinutes:6.4,
       },
       {
         name: "Audi R8",
         price: 150000,
-        drivePrice: 25,
-
         image: "audi_r8.jpeg",
         description:
           "Supersamochód z centralnie umieszczonym silnikiem V10 i napędem quattro.",
         features: ["V10 5.2L", "Napęd AWD", "Agresywny wygląd"],
+        jobTimeInMinutes:6.38,
       },
       {
         name: "Lamborghini Aventador",
         price: 400000,
-        drivePrice: 400,
-
         image: "lamborghini_aventador.jpeg",
         description:
           "Ikona supersamochodów z potężnym silnikiem V12 i wyjątkowym designem.",
         features: ["6.5L V12", "Drzwi otwierane do góry", "Napęd AWD"],
+        jobTimeInMinutes:2.3,
       },
       {
         name: "Porsche 911 Turbo S",
         price: 200000,
-        drivePrice: 30,
         image: "porsche_911.jpeg",
         description: "Perfekcyjna kombinacja luksusu, osiągów i technologii.",
         features: ["Silnik z tyłu", "Launch Control", "Aktywna aerodynamika"],
+        jobTimeInMinutes:6.3,
       },
       {
         name: "Dodge Charger Hellcat",
         price: 85000,
-        drivePrice: 85,
         image: "dodge_charger.jpeg",
         description: "Muscle car z piekielnym V8 o mocy ponad 700 KM.",
         features: ["Supercharged V8", "Tryb driftu", "Głośny wydech"],
+        jobTimeInMinutes:5.8,
       },
       {
         name: "Harley-Davidson Fat Boy",
         price: 25000,
-        drivePrice: 25,
         image: "harley_fatboy.jpeg",
         description: "Kultowy motocykl cruiser z niepowtarzalnym brzmieniem.",
         features: [
@@ -84,46 +81,46 @@ class Vehicle {
           "Chromowane elementy",
           "Szeroka tylna opona",
         ],
+        jobTimeInMinutes:6.45,
       },
       {
         name: "Yamaha R1",
         price: 20000,
-        drivePrice: 20,
         image: "yamaha_r1.jpeg",
         description: "Motocykl sportowy o wysokich osiągach, idealny na tor.",
         features: ["Silnik 1000cc", "Kontrola trakcji", "Aktywne zawieszenie"],
+        jobTimeInMinutes:5.9,
       },
       {
         name: "Kawasaki Ninja H2",
         price: 32000,
-        drivePrice: 32,
         image: "kawasaki_h2.jpeg",
         description:
           "Supercharged motocykl, który przekracza granice prędkości.",
         features: ["Doładowany silnik", "Rama trellis", "Ponad 300 KM"],
+        jobTimeInMinutes:5.72,
       },
       {
         name: "Jeep Wrangler",
         price: 45000,
-        drivePrice: 45,
         image: "jeep_wrangler.jpeg",
         description:
           "Legendarny pojazd terenowy, stworzony do jazdy w najtrudniejszych warunkach.",
         features: ["Napęd 4x4", "Zdejmowany dach", "Blokady dyferencjałów"],
+        jobTimeInMinutes:8.7,
       },
       {
         name: "Mercedes-Benz G63 AMG",
         price: 200000,
-        drivePrice: 30,
         image: "mercedes_g63.jpeg",
         description:
           "Luksusowy SUV o niesamowitych możliwościach terenowych i mocnym V8.",
         features: ["Napęd 4x4", "750 Nm momentu obrotowego", "Tryb terenowy"],
+        jobTimeInMinutes:8.4,
       },
       {
         name: "John Deere 8R",
         price: 180000,
-        drivePrice: 28,
         image: "john_deere_8r.jpeg",
         description:
           "Nowoczesny traktor o dużej mocy, idealny do ciężkiej pracy w rolnictwie.",
@@ -132,11 +129,11 @@ class Vehicle {
           "GPS Auto-Steer",
           "Hydrauliczne zawieszenie",
         ],
+        jobTimeInMinutes:9.9,
       },
       {
         name: "Claas Lexion 8900",
         price: 450000,
-        drivePrice: 55,
         image: "claas_lexion.jpeg",
         description:
           "Kombajn rolniczy o ogromnej wydajności i nowoczesnej technologii.",
@@ -145,20 +142,20 @@ class Vehicle {
           "System czyszczenia ziarna",
           "Wysoka wydajność",
         ],
+        jobTimeInMinutes:9.9,
       },
       {
         name: "Toyota Land Cruiser",
         price: 90000,
-        drivePrice: 90,
         image: "toyota_land_cruiser.jpeg",
         description:
           "Niezawodna terenówka, używana na całym świecie do najtrudniejszych zadań.",
         features: ["Silnik V8", "Wytrzymałe zawieszenie", "Bogate wyposażenie"],
+        jobTimeInMinutes:7.9,
       },
       {
         name: "Giant Trance E+",
         price: 5500,
-        drivePrice: 3,
         image: "giant_trance.jpeg",
         description: "Elektryczny rower górski do jazdy po trudnym terenie.",
         features: [
@@ -166,11 +163,11 @@ class Vehicle {
           "Amortyzacja Fox",
           "Lekkie karbonowe ramy",
         ],
+        jobTimeInMinutes:9,
       },
       {
         name: "Specialized Tarmac SL7",
         price: 12000,
-        drivePrice: 12,
         image: "specialized_tarmac.jpeg",
         description:
           "Profesjonalny rower szosowy, wykorzystywany w wyścigach kolarskich.",
@@ -179,11 +176,11 @@ class Vehicle {
           "Hydrauliczne hamulce tarczowe",
           "Aerodynamiczna konstrukcja",
         ],
+        jobTimeInMinutes:8.8,
       },
       {
         name: "Scania R500",
         price: 120000,
-        drivePrice: 12,
         image: "scania_r500.jpeg",
         description:
           "Ciężarówka dalekobieżna o potężnym silniku i komfortowej kabinie.",
@@ -192,6 +189,7 @@ class Vehicle {
           "Automatyczna skrzynia biegów",
           "System oszczędzania paliwa",
         ],
+        jobTimeInMinutes:7.8,
       },
     ];
 

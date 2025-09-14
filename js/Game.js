@@ -274,11 +274,24 @@ class Game {
       this.currentSalary = this.salary.getSalary();
     }
 
-    this.jobButtonsHandler();
+    // Oblicz czas pracy na podstawie pojazdu w ekwipunku
+  let workTime = this.jobTime; // domyślnie 10 minut
+  
+  if (this.equipment.vehicles.length > 0) {
+    // Znajdź najszybszy pojazd (z najmniejszym jobTime)
+    const fastestVehicle = this.equipment.vehicles.reduce((fastest, vehicle) => {
+      return vehicle.jobTimeInMinutes < fastest.jobTimeInMinutes ? vehicle : fastest;
+    });
+    
+    workTime = fastestVehicle.jobTimeInMinutes * 60 * 1000; // konwertuj minuty na milisekundy
+  }
 
-    this.startProgress(this.jobTime, this.jobProgress);
+  this.jobButtonsHandler();
 
-    this.charakterState();
+  this.startProgress(workTime, this.jobProgress);
+  console.log(workTime)
+
+  this.charakterState();
   }
 
   quitJob() {

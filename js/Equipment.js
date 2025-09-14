@@ -15,7 +15,6 @@ class Equipment {
       {
         name: "Segway Ninebot MAX",
         price: 800,
-        drivePrice: 1,
         image: "segway_ninebot.jpeg",
         description:
           "Elektryczna hulajnoga o dużym zasięgu, idealna do miejskiej mobilności.",
@@ -24,6 +23,7 @@ class Equipment {
           "Składana konstrukcja",
           "Amortyzacja przedniego koła",
         ],
+        jobTimeInMinutes: 10,
       },
     ];
 
@@ -31,7 +31,6 @@ class Equipment {
   }
 
   getItem(index) {
-    console.log(index);
     return this.items[index];
   }
 
