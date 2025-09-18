@@ -517,10 +517,12 @@ class Game {
   doneDrive(vehicle) {
     // this.sound.play(this.sound.doneWork); klakson
     this.driveProgress = 0;
+    const drivePrice = Math.round(vehicle.price/1000)
+    
     clearInterval(this.driveProgressIndex);
 
     this.updateDriveProgressBar();
-    this.wallet.addMoneyToAccount(vehicle.drivePrice);
+    this.wallet.addMoneyToAccount(drivePrice);
   }
 
   //charakter state
